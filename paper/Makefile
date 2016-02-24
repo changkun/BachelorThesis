@@ -1,0 +1,19 @@
+cn: main-cn.pdf
+en: main-en.pdf
+
+main-cn.pdf: main-cn.tex content/*
+	xelatex --file-line-error --synctex=1 main-cn
+	bibtex main-cn
+	xelatex --file-line-error --synctex=1 main-cn
+	xelatex --file-line-error --synctex=1 main-cn
+	open ./main-cn.pdf
+
+main-en.pdf: main-en.tex content/*
+	xelatex --file-line-error --synctex=1 main-en
+	bibtex main-en
+	xelatex --file-line-error --synctex=1 main-en
+	xelatex --file-line-error --synctex=1 main-en
+	open ./main-en.pdf
+
+clean:
+	rm -rf *.aux *.log *.out *.synctex.gz *.bbl *.blg
