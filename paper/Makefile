@@ -7,6 +7,7 @@ main-cn.pdf: main-cn.tex content/*
 	xelatex --file-line-error --synctex=1 main-cn
 	xelatex --file-line-error --synctex=1 main-cn
 	open ./main-cn.pdf
+	make clean
 
 main-en.pdf: main-en.tex content/*
 	xelatex --file-line-error --synctex=1 main-en
@@ -14,6 +15,9 @@ main-en.pdf: main-en.tex content/*
 	xelatex --file-line-error --synctex=1 main-en
 	xelatex --file-line-error --synctex=1 main-en
 	open ./main-en.pdf
+	make clean
 
 clean:
-	rm -rf *.aux *.log *.out *.synctex.gz *.bbl *.blg
+	rm -f content/*.aux *.aux *.log *.toc *.glo *.idx *.ilg *.out *.bbl *.thm *.blg *.lot *.lof *.synctex.gz
+	touch main-en.tex
+	touch main-cn.tex
