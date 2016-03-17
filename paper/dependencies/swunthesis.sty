@@ -1,3 +1,12 @@
+
+% 引入基本宏包
+\usepackage{amsmath}
+
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+
 % 定义基础命令
 % ==========================================================
 % thesis title
@@ -62,22 +71,22 @@
 %\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
 \lstset{
-  basicstyle={\small\ttfamily},        	
-  keywordstyle={\bfseries\color{NavyBlue}},  		  
-  breaklines=true,                  			
-  emphstyle={\bfseries\color{Rhodamine}},     		
-  commentstyle={\color{PineGreen!60!black}}, 		
-  stringstyle={\rmfamily\color{YellowOrange}},     						
-  showstringspaces=false,          					
-  frame=shadowbox,	                     		
-  breakatwhitespace=false,       
-  captionpos=b,      
-  extendedchars=true,              
-  keepspaces=true,          
+  basicstyle={\small\ttfamily},
+  keywordstyle={\bfseries\color{NavyBlue}},
+  breaklines=true,
+  emphstyle={\bfseries\color{Rhodamine}},
+  commentstyle={\color{PineGreen!60!black}},
+  stringstyle={\rmfamily\color{YellowOrange}},
+  showstringspaces=false,
+  frame=shadowbox,
+  breakatwhitespace=false,
+  captionpos=b,
+  extendedchars=true,
+  keepspaces=true,
   numbers=left,
-  numberstyle=\tiny, 
+  numberstyle=\tiny,
   rulecolor=\color{black},
-  rulesepcolor={\color{blue!20!white}},   
+  rulesepcolor={\color{blue!20!white}},
   showspaces=false,
 }
 
@@ -111,7 +120,7 @@
 \vspace*{1cm}
 \centerline{\heiti \zihao{-3} {Abstract}}
 \vspace{1.2cm}
-\kaishu \zihao{5} 
+\kaishu \zihao{5}
 \keyword{#1} }
 {\\\par \textbf{Keywords} \varKeyword \clearpage}
 
@@ -197,7 +206,7 @@ headsep=0.5cm,          % <-- and this
 % miscellaneous and debug
 % =========================================================
 \ctexset{today=small}
-%\usepackage{layout}        
+%\usepackage{layout}
 %\geometry{showframe=true}
 
 
@@ -208,8 +217,9 @@ headsep=0.5cm,          % <-- and this
 %setup chapter format
 \ctexset{ chapter = { beforeskip={-15pt} } }
 \ctexset{ chapter = { afterskip={10pt} } }
-\ctexset{ chapter = { name={,} } }
-\ctexset{ chapter = { number={\arabic{chapter}} }}
+\ctexset{ chapter = { name={第,章} } }
+\ctexset{ chapter = { format={\raggedright}}}
+%\ctexset{ chapter = { number={\arabic{chapter}} }}
 \ctexset{ chapter = { nameformat={\zihao{3} \bfseries \heiti} }}
 \ctexset{ chapter = { titleformat={\zihao{3} \bfseries \heiti} }}
 
@@ -235,9 +245,8 @@ headsep=0.5cm,          % <-- and this
 \ctexset{ subsubsection = { titleformat={\zihao{-4} \heiti} }}
 
 % let the chapter pages display headers
-\fancypagestyle{plain}{} 
+\fancypagestyle{plain}{}
 
 %setup font
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
-
