@@ -11,9 +11,22 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
+    
+    @IBOutlet private weak var countButton: WKInterfaceButton!
+    
+    var tapCounter: TapCounter
+    var currentDevice: WKInterfaceDevice
+    
+    override init() {
+        tapCounter = TapCounter()
+        currentDevice = WKInterfaceDevice.currentDevice()
+    }
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        tapCounter.load()
+        countButton.setTitle("\(tapCounter.count)")
         
         // Configure interface objects here.
     }
@@ -28,4 +41,22 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    
+    @IBAction func addTapCounter() {
+        currentDevice.playHaptic(.Success)
+        tapCounter.add()
+        tapCounter.save()
+        countButton.setTitle("\(tapCounter.count)")
+    }
+    @IBAction func minusTapCounter() {
+        currentDevice.playHaptic(.Failure)
+        tapCounter.minus()
+        tapCounter.save()
+        countButton.setTitle("\(tapCounter.count)")
+    }
+    @IBAction func resetTapCounter() {
+        currentDevice.playHaptic(.Stop)
+        tapCounter.reset()
+        countButton.setTitle("\(tapCounter.count)")
+    }
 }

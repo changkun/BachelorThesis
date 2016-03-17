@@ -19,6 +19,7 @@
 		79970EBD1C9A754100922B8A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79970EBC1C9A754100922B8A /* InterfaceController.swift */; };
 		79970EBF1C9A754100922B8A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79970EBE1C9A754100922B8A /* ExtensionDelegate.swift */; };
 		79970EC11C9A754100922B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79970EC01C9A754100922B8A /* Assets.xcassets */; };
+		79970ED11C9A77B000922B8A /* TapCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79970ED01C9A77B000922B8A /* TapCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		79970EBE1C9A754100922B8A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		79970EC01C9A754100922B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79970EC21C9A754100922B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79970ED01C9A77B000922B8A /* TapCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		79970EBB1C9A754100922B8A /* demo-tap WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				79970ED01C9A77B000922B8A /* TapCounter.swift */,
 				79970EBC1C9A754100922B8A /* InterfaceController.swift */,
 				79970EBE1C9A754100922B8A /* ExtensionDelegate.swift */,
 				79970EC01C9A754100922B8A /* Assets.xcassets */,
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79970ED11C9A77B000922B8A /* TapCounter.swift in Sources */,
 				79970EBF1C9A754100922B8A /* ExtensionDelegate.swift in Sources */,
 				79970EBD1C9A754100922B8A /* InterfaceController.swift in Sources */,
 			);
@@ -527,6 +531,7 @@
 				79970EC71C9A754100922B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79970EC91C9A754100922B8A /* Build configuration list for PBXNativeTarget "demo-tap WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +540,7 @@
 				79970ECB1C9A754100922B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79970ECD1C9A754100922B8A /* Build configuration list for PBXNativeTarget "demo-tap" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +549,7 @@
 				79970ECF1C9A754100922B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
