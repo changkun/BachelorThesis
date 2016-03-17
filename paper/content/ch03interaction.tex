@@ -14,4 +14,19 @@
 
 \subsection{Force Touch 仿真}
 
+对 Force Touch 进行仿真，我们需要定义两个常量：DELAY 表示触发 Force Touch 的时间延时。
+DURATION 表示 Force Touch 从最小值到最大值的持续时间。
+其中 DELAY 的值为 200，DURATION 则为 1000，两者单位为毫秒(ms)。
+
+设在一次按压中的按压时间为 $t_{\text{press}}$，则 Force Touch 可以使用公式\ref{formal:delay}进行模拟：
+\begin{equation}
+v_{F} =
+    \begin{cases}
+        \frac{t_{\text{press}}-\text{DELAY}}{\text{DURATION}}
+             & \mbox{if $t_{\text{press}}-\text{DELAY}< \text{DURATION}$} \\
+        1    & \mbox{Otherwise}
+    \end{cases}
+\label{formal:delay}
+\end{equation}
+
 \subsection{其他}
