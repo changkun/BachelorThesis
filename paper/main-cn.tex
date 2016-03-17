@@ -9,17 +9,19 @@
 \tableofcontents\thispagestyle{empty}
 \clearpage
 
-
-% 正文
+% Main Contents
 \include{content/abstract}
 \include{content/ch01intro}
 \include{content/ch02gesture}
-
-\include{content/ch06future}
+\include{content/ch03interaction}
+\include{content/ch04system}
+\include{content/ch05implementation}
+\include{content/ch06test}
+\include{content/ch07future}
 
 \cleardoublepage
 
-% 参考文献
+% Bib
 \nocite{*}
 \bibliographystyle{dependencies/bstutf8}
 \clearpage
@@ -27,7 +29,7 @@
 \addcontentsline{toc}{chapter}{参考文献} % 向目录中添加参考文献条目
 \bibliography{references/main}
 
-% 致谢
+% Thanks
 \include{content/thanks}
 
 \end{document}
