@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet private weak var countButton: WKInterfaceButton!
     
     var tapCounter: TapCounter
-    var currentDevice: WKInterfaceDevice
+    let currentDevice: WKInterfaceDevice
     
     override init() {
         tapCounter = TapCounter()
@@ -29,6 +29,10 @@ class InterfaceController: WKInterfaceController {
         countButton.setTitle("\(tapCounter.count)")
         
         // Configure interface objects here.
+        
+        for (var i=0; i<10; i++) {
+            addTapCounter()
+        }
     }
 
     override func willActivate() {
@@ -58,5 +62,47 @@ class InterfaceController: WKInterfaceController {
         currentDevice.playHaptic(.Stop)
         tapCounter.reset()
         countButton.setTitle("\(tapCounter.count)")
+    }
+    
+    
+    
+    private func showAlertControllerWithStyle(style: WKAlertControllerStyle!) {
+        
+        let defaultAction = WKAlertAction(
+            title: "Default",
+            style: WKAlertActionStyle.Default) { () -> Void in
+                
+                print("Default")
+        }
+        
+        let cancelAction = WKAlertAction(
+            title: "Cancel",
+            style: WKAlertActionStyle.Cancel) { () -> Void in
+                
+                print("Cancel")
+        }
+        
+        let destructiveAction = WKAlertAction(
+            title: "Destructive",
+            style: WKAlertActionStyle.Destructive) { () -> Void in
+                
+                print("Destructive")
+        }
+        
+        var actions = [defaultAction, destructiveAction]
+        
+        // exactly two actions are needed for WKAlertControllerStyleSideBySideButtonsAlert
+        if style != WKAlertControllerStyle.SideBySideButtonsAlert {
+            actions.append(cancelAction)
+        }
+        
+        presentAlertControllerWithTitle(
+            "SomeTitle",
+            message: "SomeMessage",
+            preferredStyle: style,
+            actions: actions)
+    }
+    @IBAction func alterViewSheet() {
+        showAlertControllerWithStyle(WKAlertControllerStyle.ActionSheet)
     }
 }

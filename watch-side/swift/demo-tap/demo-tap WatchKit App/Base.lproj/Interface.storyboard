@@ -17,6 +17,11 @@
                                 <action selector="addTapCounter" destination="AgC-eL-Hgc" id="h2L-Nl-OCP"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Alert" id="8mk-BT-qb4">
+                            <connections>
+                                <action selector="alterViewSheet" destination="AgC-eL-Hgc" id="sgf-2T-u6G"/>
+                            </connections>
+                        </button>
                     </items>
                     <menu key="menu" id="bAk-0k-Ewl">
                         <items>

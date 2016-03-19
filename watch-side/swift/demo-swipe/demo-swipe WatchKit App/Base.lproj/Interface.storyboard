@@ -1,15 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6221" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Page1 Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="Page1Controller" customModule="demo_swipe_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Page 1" id="5nL-Ix-KSI">
+                            <fontDescription key="font" type="boldSystem" pointSize="26"/>
+                        </label>
+                        <label alignment="left" text="no message" id="h7u-lv-Nvf"/>
+                        <imageView alignment="left" id="zu8-en-p11"/>
+                    </items>
+                    <connections>
+                        <outlet property="pageImage" destination="zu8-en-p11" id="ar3-If-Sei"/>
+                        <outlet property="reciveMessage" destination="h7u-lv-Nvf" id="iaV-T7-gEk"/>
+                        <segue destination="HL9-2p-8R2" kind="relationship" relationship="nextPage" id="Kvy-tw-TPc"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="12" y="396"/>
+        </scene>
+        <!--Page2 Controller-->
+        <scene sceneID="o00-Wv-kwb">
+            <objects>
+                <controller id="HL9-2p-8R2" customClass="Page2Controller" customModule="demo_swipe_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Page 2" id="sUm-fK-8Gn">
+                            <fontDescription key="font" type="boldSystem" pointSize="26"/>
+                        </label>
+                        <imageView alignment="left" id="auf-Nu-u4s"/>
+                    </items>
+                    <connections>
+                        <outlet property="pageImage" destination="auf-Nu-u4s" id="nHT-Vq-5kM"/>
+                        <segue destination="HFF-IP-VCz" kind="relationship" relationship="nextPage" id="ncm-0d-59N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="215" y="396"/>
+        </scene>
+        <!--Page3 Controller-->
+        <scene sceneID="zlf-44-sT7">
+            <objects>
+                <controller id="HFF-IP-VCz" customClass="Page3Controller" customModule="demo_swipe_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Page 3" id="FAY-AZ-RFv">
+                            <fontDescription key="font" type="boldSystem" pointSize="26"/>
+                        </label>
+                        <imageView alignment="left" id="ljD-xy-Qpe"/>
+                    </items>
+                    <connections>
+                        <outlet property="pageImage" destination="ljD-xy-Qpe" id="rmp-aR-v4v"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="410" y="396"/>
         </scene>
     </scenes>
 </document>

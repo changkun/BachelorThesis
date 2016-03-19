@@ -7,19 +7,18 @@
 //
 
 import WatchKit
+import WatchConnectivity
 import Foundation
 
 
 class Page1Controller: WKInterfaceController {
-
-    @IBOutlet var page1Image: WKInterfaceImage!
     
-    
+    @IBOutlet var pageImage: WKInterfaceImage!
+    @IBOutlet var reciveMessage: WKInterfaceLabel?
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
     }
 
     override func willActivate() {
@@ -31,9 +30,30 @@ class Page1Controller: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
-    func nextController() {
-        
-    }
 
+}
+
+extension Page1Controller: WCSessionDelegate {
+    
+    func sessionWatchStateDidChange(session: WCSession) {
+        print(session)
+        print("reachable:\(session.reachable)")
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        
+        // 检查消息是否非法：同时为 yes
+        let request = message["request"] as? [String:String]
+        if request!["next"] == "yes" && request!["prev"] == "yes" {
+            return
+        }
+        
+        reciveMessage!.setText("reviced...")
+        
+        let defaultAction = WKAlertAction(title: "ok", style: .Default) { () -> Void in
+        }
+        let actions = [defaultAction]
+        presentAlertControllerWithTitle("Message Recived", message: "\(request!["next"]),\(request!["prev"])", preferredStyle: .Alert, actions: actions)
+    }
+    
 }

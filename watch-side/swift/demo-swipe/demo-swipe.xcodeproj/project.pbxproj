@@ -16,9 +16,11 @@
 		798776C21C9CEE7900B2148A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 798776C01C9CEE7900B2148A /* Interface.storyboard */; };
 		798776C41C9CEE7900B2148A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798776C31C9CEE7900B2148A /* Assets.xcassets */; };
 		798776CB1C9CEE7900B2148A /* demo-swipe WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 798776CA1C9CEE7900B2148A /* demo-swipe WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		798776D01C9CEE7A00B2148A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798776CF1C9CEE7A00B2148A /* InterfaceController.swift */; };
+		798776D01C9CEE7A00B2148A /* Page1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798776CF1C9CEE7A00B2148A /* Page1Controller.swift */; };
 		798776D21C9CEE7A00B2148A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798776D11C9CEE7A00B2148A /* ExtensionDelegate.swift */; };
 		798776D41C9CEE7A00B2148A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798776D31C9CEE7A00B2148A /* Assets.xcassets */; };
+		798776E41C9CF08000B2148A /* Page2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798776E31C9CF08000B2148A /* Page2Controller.swift */; };
+		798776E61C9CF08E00B2148A /* Page3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798776E51C9CF08E00B2148A /* Page3Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,10 +78,12 @@
 		798776C31C9CEE7900B2148A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		798776C51C9CEE7900B2148A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		798776CA1C9CEE7900B2148A /* demo-swipe WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "demo-swipe WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		798776CF1C9CEE7A00B2148A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		798776CF1C9CEE7A00B2148A /* Page1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1Controller.swift; sourceTree = "<group>"; };
 		798776D11C9CEE7A00B2148A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		798776D31C9CEE7A00B2148A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		798776D51C9CEE7A00B2148A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		798776E31C9CF08000B2148A /* Page2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page2Controller.swift; sourceTree = "<group>"; };
+		798776E51C9CF08E00B2148A /* Page3Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page3Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +150,9 @@
 		798776CE1C9CEE7A00B2148A /* demo-swipe WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				798776CF1C9CEE7A00B2148A /* InterfaceController.swift */,
+				798776CF1C9CEE7A00B2148A /* Page1Controller.swift */,
+				798776E31C9CF08000B2148A /* Page2Controller.swift */,
+				798776E51C9CF08E00B2148A /* Page3Controller.swift */,
 				798776D11C9CEE7A00B2148A /* ExtensionDelegate.swift */,
 				798776D31C9CEE7A00B2148A /* Assets.xcassets */,
 				798776D51C9CEE7A00B2148A /* Info.plist */,
@@ -295,8 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798776E61C9CF08E00B2148A /* Page3Controller.swift in Sources */,
+				798776E41C9CF08000B2148A /* Page2Controller.swift in Sources */,
 				798776D21C9CEE7A00B2148A /* ExtensionDelegate.swift in Sources */,
-				798776D01C9CEE7A00B2148A /* InterfaceController.swift in Sources */,
+				798776D01C9CEE7A00B2148A /* Page1Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
