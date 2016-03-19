@@ -20,14 +20,20 @@
                                 <action selector="addIndex" destination="AgC-eL-Hgc" id="kcG-hb-kMR"/>
                             </connections>
                         </button>
+                        <label alignment="left" text="x:" id="9NV-Nx-maY"/>
+                        <label alignment="left" text="y:" id="Qzw-sJ-OMJ"/>
+                        <label alignment="left" text="z:" id="pcS-Gk-eRd"/>
                     </items>
                     <connections>
                         <outlet property="circleGroup" destination="tHs-Uj-RUx" id="nfH-ZW-sKn"/>
                         <outlet property="picker" destination="nD3-xU-vQR" id="gkA-p0-r3Z"/>
+                        <outlet property="x" destination="9NV-Nx-maY" id="NAI-6o-3GP"/>
+                        <outlet property="y" destination="Qzw-sJ-OMJ" id="1qH-Cs-mAo"/>
+                        <outlet property="z" destination="pcS-Gk-eRd" id="VYQ-IM-Wqn"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="242" y="373.25"/>
+            <point key="canvasLocation" x="173" y="373.25"/>
         </scene>
     </scenes>
 </document>

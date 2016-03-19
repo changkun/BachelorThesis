@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-
+import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
     
@@ -18,8 +18,18 @@ class InterfaceController: WKInterfaceController {
     let watchDevice: WKInterfaceDevice = WKInterfaceDevice()
     var index: Int = 0
 
+    @IBOutlet var x: WKInterfaceLabel!
+    @IBOutlet var y: WKInterfaceLabel!
+    @IBOutlet var z: WKInterfaceLabel!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        if WCSession.isSupported() {
+            let session = WCSession.defaultSession()
+            session.delegate = self // conforms to WCSessionDelegate
+            session.activateSession()
+        }
     
         var images: [UIImage]! = []
         var pickerItems: [WKPickerItem]! = []
@@ -35,6 +45,8 @@ class InterfaceController: WKInterfaceController {
         circleGroup.setBackgroundImage(circleImages)
         picker.setCoordinatedAnimations([circleGroup])
         picker.setItems(pickerItems)
+        
+
     }
     @IBAction func addIndex() {
         if index == 36 {
@@ -66,4 +78,27 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+}
+
+extension InterfaceController: WCSessionDelegate {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        guard message["up"] as? [String:String] != nil else {return}
+        
+//        let defaultAction = WKAlertAction(
+//            title: "OK",
+//            style: WKAlertActionStyle.Default) { () -> Void in
+//        }
+//        let actions = [defaultAction]
+//        
+//        presentAlertControllerWithTitle(
+//            "Message Received",
+//            message: "",
+//            preferredStyle: WKAlertControllerStyle.Alert,
+//            actions: actions)
+        let content = message["up"] as! [String : String]
+
+        x.setText(content["x"])
+        y.setText(content["y"])
+        z.setText(content["z"])
+    }
 }
