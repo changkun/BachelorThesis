@@ -1,0 +1,21 @@
+{
+  "name": "leap_server",
+  "version": "0.0.1",
+  "description": "A LeapMotion Gesture Server",
+  "main": "server.js",
+  "dependencies": {
+    "leapjs": "^0.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "leap",
+    "server",
+    "gesture"
+  ],
+  "author": "Changkun Ou",
+  "license": "GPL-3.0"
+}
