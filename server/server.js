@@ -1,6 +1,6 @@
 // require('template/entry');
 
-var https = require('https'),
+var http = require('http'),
     fs    = require('fs'),
     path  = require('path'),
     leap  = require('leapjs');
@@ -9,19 +9,37 @@ var hands = [];
 var fingers = [];
 var strenth;
 
+var leapFrame;
+
+function PinchFinger() {
+    this.pinchIndex    = -1;
+    this.pinchStrength = 0;
+    this.grabStrength  = 0;
+}
+var pf = new PinchFinger();
+
 var option = {
     key:  fs.readFileSync('./ssl/server.key'),
     cert: fs.readFileSync('./ssl/server.crt')
 };
 // https server request handler
 function handler (req, res) {
+    // console.log(req.headers.host);
+    // console.log(req.url);
+    // console.log(req.method);
+    // console.log(req.httpVersion);
+
+    // console.log(leapFrame);
     res.writeHead(200);
-    res.end('hello world!');
+    // res.end(JSON.stringify(leapFrame));
+    // res.end('hello world');
+    res.end(JSON.stringify(pf));
 }
-var server = https.createServer(option, handler);
-server.listen(5636, function(err) {
-    console.log("https listening on port: 5636");
-});
+// var server = https.createServer(option, handler);
+http.createServer(handler).listen(10086);
+console.log("Server running at http://locoalhost:5637")
+
+
 
 // Leap Processing
 // var controller = new leap.Controller({enableGesture: true});
@@ -46,6 +64,8 @@ server.listen(5636, function(err) {
 
 leap.loop({enableGesture: true},function(frame) {
 
+    leapFrame = frame
+
     // 当 frame 中有手存在时才进行检测
     if(frame.hands.length > 0) {
         var hand = frame.hands[0];
@@ -53,20 +73,25 @@ leap.loop({enableGesture: true},function(frame) {
         // 检测 pinch 手势
         if(hand.pinchStrength > 0) {
             var pinchingFinger = findPinchingFinger(hand);
-            console.log('pinch strength: ', hand.pinchStrength)
-            console.log('finger type: ', pinchingFinger.type)
+            console.log('pinch strength: ', hand.pinchStrength);
+            console.log('finger type: ', pinchingFinger.type);
+            pf.pinchIndex = pinchingFinger.type;
+            pf.pinchStrength = hand.pinchStrength;
         } else {
             console.log('no pinch finger')
+            pf.pinchIndex = -1;
+            pf.pinchStrength = 0;
         }
 
         // 检测 Grab 手势
         // grabStrength > 0.85 时候可以认为当前为握拳状态，经验值
         // 这时候可以忽略 finger type 的计算
-        console.log('grab strength: ',hand.grabStrength)
+        console.log('grab strength: ',hand.grabStrength);
+        pf.grabStrength = hand.grabStrength;
 
         // 检测 双手 手势
         if(frame.hands.length == 2) {
-            var binualGesture = fingerMoving(frame.hands)
+            var binualGesture = fingerMoving(frame.hands);
         }
 
         // 检测当前手势
@@ -81,7 +106,13 @@ leap.loop({enableGesture: true},function(frame) {
                 }
             });
         }
+    } else {
+        pf.pinchIndex = -1;
+        pf.pinchStrength = 0;
     }
+
+
+
     // pinch gesture
     // calculate the distance to figure out which finger is pinched
     function findPinchingFinger(hand){
