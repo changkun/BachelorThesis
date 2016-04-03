@@ -2,10 +2,75 @@
 
 \section{环境搭建}
 
-\section{关键编码}
+无论是手表端的还是服务端，都存在框架依赖，因此环境搭建不可避免。在本项目中，服务端使用 NodeJS 进行编码，因此对于 NodeJS 相关的基本环境，如 Node 本体，NPM 包管理等常见工具的环境限于篇幅在本文中略去，这里主要介绍运行本平台最重要第三方 Leap Motion 环境；而在手表端中，虽然我们不依赖其他第三方框架，但由于 watchOS 自身的限制\ref{} 在 watchOS 2 中我们需要使用 WatchConnectivity 框架与 iOS 应用本体进行数据通信，而又由于 iOS 系统本身限制（iOS 9及以上）强制要求应用必须与 HTTPS 服务器进行通信，因此这里介绍在 iOS 9 中与 HTTP 服务器通信的配置方法。
 
-\subsection{桌面端}
+\subsection{配置本地 LeapMotion 环境}
 
-\subsection{服务端}
+LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不同的开发语言
 
-\subsection{手表端}
+\textbf{1. 安装}
+
+
+
+\textbf{2. 环境配置}
+
+受到 LeapMotion 自身的限制\cite{Leap:2016}，WebSocket 服务并非默认的向非本地访问开放，因此需要将 Leap 配置启用非本地客户端连接。
+
+这需要对 LeapMotion 的配置文件进行修改。在修改配置之前，需要关闭 LeapMotion 的相关服务。在 Mac 中，使用下面的命令关闭 LeapMotion 的守护进程：
+\begin{lstlisting}
+sudo launchctl unload /Library/LaunchDaemons/com.leapmotion.leapd.plist
+\end{lstlisting}
+
+接下来我们需要修改 LeapMotion 的配置文件，根据 LeapMotion 的官方文档显示，Leap 包含两个不同的配置，其中控制面板配置的优先级最高，因此我们需要下面这个目录下：
+\begin{lstlisting}
+$HOME/Library/Application\ Support/Leap\ Motion
+\end{lstlisting}
+
+找到 config.json 的修改配置，编辑 config.json 文件，并在 configuration 字段中的任意位置添加一条：
+\begin{lstlisting}
+"websockets_allow_remote": true
+\end{lstlisting}
+
+最终得到：
+
+\begin{lstlisting}
+{
+    "configuration": {
+        "websockets_allow_remote": true,
+        "background_app_mode": 2,
+        "images_mode": 2,
+        "interaction_box_auto": true,
+        "power_saving_adapter": true,
+        "robust_mode_enabled": false,
+        "tracking_tool_enabled": true
+    }
+}
+\end{lstlisting}
+
+保存，退出，重新启动 LeapMotion 服务：
+
+\begin{lstlisting}
+sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
+\end{lstlisting}
+
+\subsection{配置 watchOS 的网络访问}
+
+\section{服务端编码}
+
+实现一个端口为 10086 的 HTTP 服务器是第一步：
+\begin{lstlisting}
+var http = require('http');
+function handler (req, res) {
+    res.writeHead(200);
+}
+http.createServer(handler).listen(10086);
+console.log("Server running at http://locoalhost:10086")
+\end{lstlisting}
+
+下面我们来关注服务端中对 LeapMotion 手势的关键处理。
+
+\subsection{Tap 手势识别}
+
+\subsection{Swipe 手势识别}
+
+\section{手表端编码}
