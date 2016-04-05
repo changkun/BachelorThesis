@@ -2,15 +2,26 @@
 
 \section{环境搭建}
 
-无论是手表端的还是服务端，都存在框架依赖，因此环境搭建不可避免。在本项目中，服务端使用 NodeJS 进行编码，因此对于 NodeJS 相关的基本环境，如 Node 本体，NPM 包管理等常见工具的环境限于篇幅在本文中略去，这里主要介绍运行本平台最重要第三方 Leap Motion 环境；而在手表端中，虽然我们不依赖其他第三方框架，但由于 watchOS 自身的限制\ref{} 在 watchOS 2 中我们需要使用 WatchConnectivity 框架与 iOS 应用本体进行数据通信，而又由于 iOS 系统本身限制（iOS 9及以上）强制要求应用必须与 HTTPS 服务器进行通信，因此这里介绍在 iOS 9 中与 HTTP 服务器通信的配置方法。
+无论是手表端的还是服务端，都存在框架依赖，因此环境搭建不可避免。在本项目中，服务端使用 NodeJS 进行编码，限于篇幅，对 NodeJS 相关的基本环境，如 Node 本体，NPM 包管理等常见工具的配置在文中略去，这里主要介绍运行本平台最重要第三方 Leap Motion 环境；而在手表端中，虽然我们不依赖其他第三方框架，但由于 watchOS 自身的限制\cite{WatchConnectivity:2016} 在 watchOS 2 中我们需要使用 WatchConnectivity 框架与 iOS 应用本体进行数据通信。
+%而又由于 iOS 系统本身限制（iOS 9及以上）强制要求应用必须与 HTTPS 服务器进行通信，因此这里介绍在 iOS 9 中与 HTTP 服务器通信的配置方法。
 
 \subsection{配置本地 LeapMotion 环境}
 
-LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不同的开发语言
+LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不同的开发语言，根据上文的讨论，我们需要在服务端配置 LeapMotion 本体以及 LeapJS。
 
 \textbf{1. 安装}
 
+首先，在应用程序中引入 Leap SDK 需要在相应桌面端安装 LeapMotion 宿主程序，进而才能使用 LeapMotion 相关的 API。
 
+其次，在 Node App 的 package.json 中添加 LeapJS 依赖：
+\begin{lstlisting}
+{
+    "dependencies": {
+        "leapjs": "^0.6.4"
+    },
+}
+\end{lstlisting}
+再使用 npm install 安装 LeapJS。
 
 \textbf{2. 环境配置}
 
@@ -47,7 +58,7 @@ $HOME/Library/Application\ Support/Leap\ Motion
 }
 \end{lstlisting}
 
-保存，退出，重新启动 LeapMotion 服务：
+保存退出，重新启动 LeapMotion 服务，便完成了 LeapMotion 的相关配置：
 
 \begin{lstlisting}
 sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
