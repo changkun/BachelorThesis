@@ -1,8 +1,9 @@
 \chapter{非接触备择设计}
 
+上一章中我们分析了 Apple Watch 上的交互方式，除了语音交互外，这些方式都要求用户使用双手来完成整个交互，但实际场景中，如果用户双手空闲，则用户完全可以使用手机完成需要完成的事情，况且在屏幕适中的手机上完成交互也只需一直手。因此，这种交互模式从本质上就是一种不利于增加用户粘性的交互方式。考虑使用手表时的抬碗姿势，最自然的交互自然就是在抬碗时仅用一只手便能完成全部的交互行为。
+
 \section{相关工作}
 
-\section{技术可行性}
 
 \section{交互方法}
 
@@ -14,11 +15,18 @@
 
 \subsection{Force Touch 仿真}
 
-对 Force Touch 进行仿真，我们需要定义两个常量：DELAY 表示触发 Force Touch 的时间延时。
+一项开源项目 Forcify \cite{Huxpro:2016ua} 是一个针对 Web 端触摸事件的通用框架，将任何 Web 应用里的点击事件作为 3D Touch \footnote{Apple 对 Force Touch 技术在 iOS 设备上重新命名。}进行处理，对不具备 Force Touch 功能设备采用触摸事件延时处理的方法进行模拟。然而，其处理事件的延时时间需要开发者自行定义，且触发 Force Touch 的力度是线性函数，为此，我们应对这个方法进行改进。
+
+首先，对屏幕上的触摸事件划分为两个阶段，第一个阶段的触摸事件处理为普通触摸的触摸事件，第二个阶段的触摸事件处理为 Force Touch，并使用 DELAY 表示触发 Force Touch 的时间延时，
 DURATION 表示 Force Touch 从最小值到最大值的持续时间。
 其中 DELAY 的值为 200，DURATION 则为 1000，两者单位为毫秒(ms)。
+下面考察这两个常量的取值。
 
-设在一次按压中的按压时间为 $t_{\text{press}}$，则 Force Touch 可以使用公式\ref{formal:delay}进行模拟：
+AugmentedTouch \cite{Changkun:2016} 项目实施了一个用户调研并发布了一个包含 16 名用户、使用 4 种不同的手姿、共实施 61440 次屏幕点击的数据集。在这个数据集中，每次的屏幕点击均记录了用户的手指在屏幕上的停留时间，图** 展示了这 61440 次点击的停留时间的分布。
+
+
+
+综上所述，设在一次按压中的按压时间为 $t_{\text{press}}$，则 Force Touch 可以使用公式\ref{formal:delay}进行模拟：
 \begin{equation}
 v_{F} =
     \begin{cases}
@@ -28,5 +36,6 @@ v_{F} =
     \end{cases}
 \label{formal:delay}
 \end{equation}
+其中 DELAY = 240 ms，DURATION = 1000 ms。
 
 \subsection{其他}
