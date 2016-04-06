@@ -1,10 +1,17 @@
 \chapter{手表上交互}
 
-\quad\quad 在 Apple Watch 中，由于触摸屏的存在，大部分手表中的交互方式沿袭自带有触摸屏幕的智能手机\cite{WatchGuidelines:2016}。为了对手表中的交互方式进行备择设计，我们必须分析并且明确在 Apple Watch 中现存的交互方式及其优缺点。
+\quad\quad 在 Apple Watch 中，由于触摸屏的存在，大部分手表中的交互方式沿袭自带有触摸屏幕的智能手机\cite{WatchGuidelines:2016}。为了对手表中的交互方式进行非接触式备择设计，我们必须分析并且明确在 Apple Watch 中现存的交互方式及其优缺点。
 
 \section{传统交互}
 
-传统交互上苹果公司认为在 Apple Watch 的小屏幕上实施超过两个接触点的点按行为是严重影响用户交互的，因此 Apple Watch 上的触摸屏没有沿用多点触控的方案。并且，在屏幕的普通操作中，只有基础点按和四个方向上的滑动。
+传统交互上苹果公司认为在 Apple Watch 的小屏幕上实施超过两个接触点的点按行为是严重影响用户交互的，因此 Apple Watch 上的触摸屏没有沿用多点触控的方案。并且，在屏幕的普通操作中，只有基础点按和四个方向上的滑动，如图\ref{fig:gesture}所示。
+
+\begin{figure}[H]
+\centering
+\subfigure{\includegraphics[width=0.2\textwidth]{figures/touch}}
+\caption{\textbf{传统交互}：触摸屏上的单点触摸交互能够制造点按与滑动交互，而滑动交互本身又可以看做一系列连续的点按交互。此外，滑动交互仅涉及上下左右四个方向。}
+\label{fig:gesture}
+\end{figure}
 
 \subsection{点按}
 
@@ -18,36 +25,69 @@ T=a+b\log_{2}{\left(\frac{A}{\sqrt{2\pi e(\sigma^2-\sigma_{a}^2)}}+1 \right)}
 
 其中 $\sigma$ 是触摸点分布的标准差，$\sigma_a$是输入手指的绝对精度。$A$为开始点到目标中心的距离。
 
-根据 FFitts' 定律我们可以看到，一方面，在屏幕大小及其有限的屏幕下将另一只手的手指一动到手表屏幕上会使得$A$的值很大，而且正由于屏幕大小的限制，$\sigma$的值不会较大甚至比手机触摸屏上的标准差还小，而对于同一目标而言$\sigma_a$的值又不存在变化。因此 $T$ 值会明显变大，即手表屏幕上的点按交互并不利于交互。
+根据 FFitts' 定律我们可以看到，一方面，在屏幕大小及其有限的屏幕下将另一只手的手指一动到手表屏幕上会使得$A$的值很大，而且正由于屏幕大小的限制，$\sigma$的值不会较大甚至比手机触摸屏上的标准差还小，而对于同一目标而言$\sigma_a$的值又不存在变化。因此 $T$ 值会明显变大，即手表屏幕上的点按交互可用性并不高。
 
 \subsection{滑动}
 
-屏幕上点按位置的连续变化形成了滑动式的交互。Apple Watch
+屏幕上点按位置的连续变化形成了滑动式的交互。Apple Watch 在处理目标点按时的的低可用性问题时应用了滑动手势。例如让可交互的元素尽可能的通过滑动来进行处理。
+
+水平方向的滑动可以用于对手表界面的多个水平视图进行切换、返回上级视图等，垂直反向上的滑动则可以在竖直方向上滚动当前视图。注意，垂直方向的滑动所表达的功能并非是 Digital Crown 所具备功能的子集，因为在处于 watchOS 表盘界面时，上下滑动的功能会被表达为向下滑动呼出通知栏和向下滑动呼出 Glance 界面。因此，在进行备择设计时我们要慎重考虑这部分的设计。
 
 \section{特有交互}
 
 Apple Watch 在传统触摸屏交互的基础上引入了三个全新的交互硬件，分别是Digital Crown、Force Touch 和 Haptic Engine。
 
+\begin{figure}[H]
+\centering
+\subfigure[Digital Crown]{\includegraphics[width=0.3\textwidth]{figures/digital-crown}\label{fig:digital-crown}}
+\subfigure[Force Touch]{\includegraphics[width=0.2\textwidth]{figures/force-touch}\label{fig:force-touch}}
+\subfigure[Haptic Engine]{\includegraphics[width=0.15\textwidth]{figures/haptic}\label{fig:haptic}}
+\caption{\textbf{特有交互}：Digital Crown 、 Force Touch 和 Haptic Engine 是 Apple Watch 不同于其他智能手表产品的特殊点。}
+\label{fig:special}
+\end{figure}
+
 \subsection{Digital Crown}
 
-Digital Crown 是苹果公司在Apple Watch上推出的一个全新的交互技术，苹果公司在退出此项交互的技术时，将其对比了在人机交互历史中的两个革命性的交互技术：鼠标和触摸屏，这意味着苹果公司认为，Digital Crown 是一项在手表上的革命性交互方式。
+Digital Crown 是苹果公司在Apple Watch上推出的一个全新的交互技术，苹果公司在推出此项交互的技术时，将其对比了在人机交互历史中的两个革命性的交互技术：鼠标和触摸屏，这意味着苹果公司认为，Digital Crown 是一项在手表上的革命性交互方式。
 
 这种交互方式利用了传统手表的时钟旋钮在功能可见性上的不足。在传统手表中，时钟旋钮在普通状态下不具备任何功能，只有当旋钮被从里向外拉出时，才具备调节时间的功能，这一装置在大部分时间里都不能发挥自身的作用，是一个典型的需求驱动型设计，并没有仔细考虑过其自身的存在方式，只是习惯性沿用。
 
-而在 Apple Watch 上，信息呈现的方式以流式进行总想展示，所有呈现的内容被限制在一个宽度固定、纵向可伸缩的屏幕区域里。这时，Digital Crown 便能发挥其旋钮的功能。当产生旋转时，内容在竖直方向上进行移动，从而呈现更多的内容；并且，在交互情景发生变化时，Digital Crown 能够表达出不同的交互指令，例如在影月播放界面时，Digital Crown 的旋转能够调节播放音乐的音量。
+而在 Apple Watch 上，信息呈现的方式以流式进行纵向展示，所有呈现的内容被限制在一个宽度固定、纵向可伸缩的屏幕区域里。这时，Digital Crown 便能发挥其旋钮的功能。当产生旋转时，内容在竖直方向上进行移动，从而呈现更多的内容，如图\ref{fig:digital-crown}；并且，在交互情景发生变化时，Digital Crown 能够表达出不同的交互指令，例如在影月播放界面时，Digital Crown 的旋转能够调节播放音乐的音量。
 
 \subsection{Force Touch}
 
-Force Touch 这项交互技术是首次在民用消费品中出现。在学术界中，对触摸的感知被研究了多年，***等一系列文献研究了触觉感知如何在触摸屏上进行增强，包括感觉反馈、触摸面积的测量、触摸力度等等，而 Force Touch 就是触摸力度的实际体现。
+Force Touch 这项交互技术是首次在民用消费品中出现。在学术界中，对触摸的感知被研究了多年，\cite{Boring:2012ea}等一系列文献研究了触觉感知如何在触摸屏上进行增强，包括感觉反馈、触摸面积的测量、触摸力度等等，而 Force Touch 就是触摸力度的实际体现。
 
-Force Touch 一共将触摸行为分为了两个等级，第一触摸等级就是传统意义上的触摸行为，手指轻触屏幕时即可被感知；第二触摸等级就是 Force Touch，这时需要用户将触摸屏幕的力度提升到一个级别后，系统才会进行响应，进一步处理交互。
+Force Touch 一共将触摸行为分为了两个等级，第一触摸等级就是传统意义上的触摸行为，手指轻触屏幕时即可被感知；第二触摸等级就是 Force Touch，这时需要用户将触摸屏幕的力度提升到一个级别后，系统才会进行响应，进一步处理交互，如图\ref{fig:force-touch}。
 
 \subsection{Haptic Engine}
 
+Haptic Engine 是一个内置的震动部件，如图\ref{fig:haptic}。通过这个部件对手腕传达的震动信息，可以进一步扩大用户与手表进行交互时的反馈。例如，当用户成功实施 Force Touch 后 Haptic Engine 能够给予用户不同层级的反馈，让用户亲自感受到 Force Touch 的实施成功；Haptic Engine 能够在不同用户之间分享彼此的心跳频率时自行调节振动的幅度和速度，达到真实的模拟心跳，进而显著提升 Apple Watch 的用户体验。当我们对现有交互进行备择设计时，无论交互方式如何更改，都应该向用户提供震动反馈来提醒用户操作是否成功。换句话说，Haptic Engine 所提供的震动反馈是进行非接触式备择设计的关键所在。
+
 \section{其他交互}
+
+除了以上的基础交互手段外，在 Apple Watch 上还有两个最高优先级的交互方式，如图\ref{fig:others}所示。
+
+\begin{figure}[H]
+\centering
+\subfigure[侧面按钮]{\includegraphics[width=0.2\textwidth]{figures/side}\label{fig:side}}
+\subfigure[语音控制]{\includegraphics[width=0.2\textwidth]{figures/siri}\label{fig:siri}}
+\caption{\textbf{其他交互}：侧面按钮的存在提高将一项功能提升到了最高的呼出级别，而 Siri 是 Apple Watch 上唯一的文字输入入口。}
+\label{fig:others}
+\end{figure}
 
 \subsection{侧面按钮}
 
-\subsection{常规手势}
+苹果公司可能注意到了在 Apple Watch 上对应用操作的延时复杂性和不便，沿用了手机上电源键的设计，在已经存在 Digital Crown 按键的基础上依然添加了另一个实体按键，如图\ref{fig:side}。
+
+该颗改建存在两个不同的交互内容，当按下该按键一次时，按键会呼出常用联系人列表，方便通过 Apple Watch 拨打电话及发送讯息等；当连续按下改建两次时，如果当前 Apple Watch 绑定 Apple Pay 银行卡时，能够呼出默认银行卡进行 Apple Pay 支付。
 
 \subsection{语音控制}
+
+尽管对于穿戴式设备的输入方式有很多设计，但是在 watchOS 上是没有哪怕是屏幕上的键盘来制造文本输入。因此，Siri 成了唯一一个能够向 watchOS 输入文本的接口，如图\ref{fig:siri}。
+
+watchOS 上的 Siri 有两种呼出方式，一种是在 Apple Watch 处于唤醒状态下时说出『Hey Siri』；另一种则是长按 Digital Crown。
+
+然而，无论是其中的哪种方式，最后的文字输入效果都不理想。这是因为 Siri 依赖自然语言的识别处理，同时还需要一个配对的手机进行网络访问。这其中只要任何一个环节出问题便不能完成文字的输入。
+
+值得一提的是，在上文提到的所有的交互方式中，只有语音控制是非接触式的交互设计。
