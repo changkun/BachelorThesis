@@ -4,13 +4,29 @@
 
 \section{传统交互}
 
-\subsection{点击}
+传统交互上苹果公司认为在 Apple Watch 的小屏幕上实施超过两个接触点的点按行为是严重影响用户交互的，因此 Apple Watch 上的触摸屏没有沿用多点触控的方案。并且，在屏幕的普通操作中，只有基础点按和四个方向上的滑动。
+
+\subsection{点按}
+
+屏幕的上的普通单点触控与智能手机上的方式并没有明显差异。这种点按方式在人机交互形式上早已被大众所接受，此种方式的用户接受成本也是最低最自然的。
+
+然而将此种交互应用在智能手表上时则极大的降低了其自身的可用性，根据触摸屏上的 FFitts' 定律\cite{Bi:2013:FLM:2470654.2466180}：
+
+\begin{equation}
+T=a+b\log_{2}{\left(\frac{A}{\sqrt{2\pi e(\sigma^2-\sigma_{a}^2)}}+1 \right)}
+\end{equation}
+
+其中 $\sigma$ 是触摸点分布的标准差，$\sigma_a$是输入手指的绝对精度。$A$为开始点到目标中心的距离。
+
+根据 FFitts' 定律我们可以看到，一方面，在屏幕大小及其有限的屏幕下将另一只手的手指一动到手表屏幕上会使得$A$的值很大，而且正由于屏幕大小的限制，$\sigma$的值不会较大甚至比手机触摸屏上的标准差还小，而对于同一目标而言$\sigma_a$的值又不存在变化。因此 $T$ 值会明显变大，即手表屏幕上的点按交互并不利于交互。
 
 \subsection{滑动}
 
+屏幕上点按位置的连续变化形成了滑动式的交互。Apple Watch
+
 \section{特有交互}
 
-Apple Watch 在传统触摸屏交互的基础上引入了三个全新的交互硬件，分别是Digital Crown、Force Touch 和 Taptic Engine。
+Apple Watch 在传统触摸屏交互的基础上引入了三个全新的交互硬件，分别是Digital Crown、Force Touch 和 Haptic Engine。
 
 \subsection{Digital Crown}
 
@@ -26,7 +42,7 @@ Force Touch 这项交互技术是首次在民用消费品中出现。在学术�
 
 Force Touch 一共将触摸行为分为了两个等级，第一触摸等级就是传统意义上的触摸行为，手指轻触屏幕时即可被感知；第二触摸等级就是 Force Touch，这时需要用户将触摸屏幕的力度提升到一个级别后，系统才会进行响应，进一步处理交互。
 
-\subsection{Taptic Engine}
+\subsection{Haptic Engine}
 
 \section{其他交互}
 
