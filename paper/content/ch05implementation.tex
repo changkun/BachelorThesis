@@ -1,4 +1,4 @@
-\chapter{编码实现}
+\chapter{核心实现}
 
 \section{环境搭建}
 
@@ -66,7 +66,16 @@ sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
 
 \subsection{配置 watchOS 的网络访问}
 
+从 iOS 9 开始， iOS 对网络访问引入了 App Transport Security (ATS) 特性，这使得在默认状态下 iOS 应用无法发起非安全的网络请求（如 HTTP）。
+
+【以下内容还在调整，可能会根据需求更换为 WebSocket】
+为使服务器与 iOS 端进行通信，还能够
+在Info.plist中添加NSAppTransportSecurity类型Dictionary。
+在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+
 \section{服务端编码}
+
+【以下内容还在调整，可能会根据需求更换为 WebSocket】
 
 实现一个端口为 10086 的 HTTP 服务器是第一步：
 \begin{lstlisting}
@@ -80,8 +89,20 @@ console.log("Server running at http://locoalhost:10086")
 
 下面我们来关注服务端中对 LeapMotion 手势的关键处理。
 
-\subsection{Tap 手势识别}
+\subsection{点按识别与 Force Touch 模拟}
 
-\subsection{Swipe 手势识别}
+【以下内容还在调整，待补充】
+
+\subsection{双指滑动}
+
+【以下内容还在调整，待补充】
+
+\subsection{五指合并}
+
+【以下内容还在调整，待补充】
 
 \section{手表端编码}
+
+【以下内容还在调整，待补充】
+
+要引用\cite{swift2015, swiftoc2015}这两篇文献
