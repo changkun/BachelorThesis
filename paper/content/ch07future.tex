@@ -11,6 +11,7 @@
 在文\cite{Bailly:2012:SNP:2207676.2208576}中，Gilles 等人将一颗深度摄像头绑定在鞋子顶部，并在用户和腰部设置一个处理硬件用于识别交互，从而在鞋子顶部的上方制造了交互区域。类似的，我们可以设计图\ref{fig:hardware}所示的一个可移动的 LeapMotion 识别方案。
 
 \begin{figure}[H]
+    \kaishu
     \centering
     \includegraphics[width=0.6\textwidth]{figures/hardware}
     \caption{\kaishu \textbf{硬件结构}: 图中由三部分硬件分别为一个 5V-2A 输出功率的移动电源、一个组装了 WiFi 模组的树莓派 B+、一个 LeapMotion 硬件}
@@ -23,14 +24,13 @@
 
 \subsection{交互缺陷}
 
-本文给出的备择设计虽然从交互形式的表面上完整对接了原有的设计，但是一旦用户任务复杂时，此备择设计的效率则会劣于接触式设计。受到 Keystroke-Level Model （KL 模型）的启发，我们可以给出手表任务上的 KL 模型，并将一个用户任务分解为几个基础步骤，见表\ref{table:task}：
+本文给出的备择设计虽然从交互形式的表面上完整对接了原有的设计，但是一旦用户任务复杂时，此备择设计的效率则会劣于接触式设计。受到 Keystroke-Level Model （KL 模型）\cite{Card:1980:KMU:358886.358895}的启发，我们可以给出手表任务上的 KL 模型，并将一个用户任务分解为几个基础步骤，见表\ref{table:task}：
 
 \begin{table}[H]
     %\scriptsize
     \small
     \kaishu
     \centering
-
     \begin{tabular}{c l}
         \toprule
         \textbf{变量}        & \textbf{描述} \\
@@ -70,13 +70,14 @@
 Myo \cite{Myo:2016} 是一个固定在手臂上的对手部肌肉电信号进行感知从而进行手势识别的装置，如图\ref{fig:myo}所示。Myo 通过内置的 Wi-Fi 装置将识别的电信号传递给其他的连接部件，Myo 开放了并规范化了对手部肌肉电信号时间序列的识别协议，这意味着我们可以对这种表现模式的手势数据进行分析，进而逐步完善手势系统。
 
 \begin{figure}[H]
+    \kaishu
     \centering
     \includegraphics[width=0.15\textwidth]{figures/myo}
     \caption{\kaishu \textbf{Myo 识别装置}: Myo 安装在手臂上对手部肌肉的电信号进行检测，从而根据这些电信号在时间序列上的变化特征进行手势识别。}
     \label{fig:myo}
 \end{figure}
 
-Myo 的设计实际上完全符合手表的人体工程学设计，因为手表的表带就是 Myo 最好的存在形式。当 Myo 能够缩小并设计成手表的表带时，这时手表系统本身在识别上不再依赖其他额外的设备，大幅降低设备间通信的消耗，更加高效的完成交互。
+Myo 的设计实际上完全符合手表的人体工程学设计，因为手表的表带就是 Myo 最好的存在形式。当 Myo 能够缩小并设计成手表的表带时，这时手表系统本身在识别上不再依赖其他额外的设备，大幅降低设备间通信的消耗，便更加高效的完成交互。
 
 \subsection{交互感知中心}
 
@@ -85,6 +86,7 @@ Myo 的设计实际上完全符合手表的人体工程学设计，因为手表�
 图 \ref{fig:universe-arch} 为对前文中适用于手表备择设计的通信架构的推广设计，在服务端和客户端引入了交互感知中心（Interaction Perception Center, IPC 是一个基于桌面端和移动端设备的跨平台交互解决方案）服务\cite{Changkun:2015ipc}。当我们将 IPC 这系统级的交互模型引入时，实现 IPC 核心服务的传感器处理协议（Sensor Handle Protocol, SH协议）能够屏蔽掉硬件之间的差异，统一的将传感器形式化、标准化，而通过跨设备交互协议（Cross-Device Interaction Protocol, CDI协议）能实现用户设备与 IPC 服务之间的通信。
 
 \begin{figure}[H]
+    \kaishu
     \centering
     \includegraphics[width=0.4\textwidth]{figures/universe-arch}
     \caption{\kaishu \textbf{通用通信架构}: 在服务端和客户端引入了 IPC 服务。}
