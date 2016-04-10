@@ -6,26 +6,7 @@
 因此，这种交互模式从本质上就是一种不利于增加用户粘性的交互方式。
 考虑使用手表时的抬碗姿势，最自然的交互自然就是在抬碗时仅用一只手便能完成全部的交互行为。
 
-\section{相关工作}
-
-【接下部分的内容待写】
-
-有很多的研究对现有的手表交互进行了扩展，将***，
-但这些研究并没有认识到手表上原有的交互方式就存在诸多问题。
-
-非接触式的交互设计同样有相关的研究，文\cite{lv2015extending}使用 Google 眼镜上的摄像头应用视觉方法来检测用户的手势，进而完成非触摸式的交互，然而文中只是对这一技术
-
-\subsection{空间手势}
-
-【接下部分的内容待写】
-
-\subsection{智能手表交互}
-
-【接下部分的内容待写】
-
-\section{交互方法}
-
-【接下部分的内容待写】
+\section{交互模式设计}
 
 \subsection{点按与视图切换}
 
@@ -62,37 +43,69 @@ DURATION 表示 Force Touch 从最小值到最大值的持续时间。
 
 在 AugmentedTouch \cite{Changkun:2016} 项目中，我们实施了一个用户调研并发布了一个包含 16 名用户、
 使用 4 种不同的手姿、共实施 61440 次屏幕点击的数据集。
-在这个数据集中，每次的屏幕点击均记录了用户的手指在屏幕上的停留时间，图** 展示了这 61440 次点击的停留时间的分布。
+在这个数据集中，每次的屏幕点击均记录了用户的手指在屏幕上的停留时间，图\ref{fig:result}展示了这 61440 次点击的停留时间的分布。
 
-【待补充，缺结果图】
+\begin{figure}[H]
+    \kaishu
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/count-result}
+    \caption{\kaishu 统计结果}
+    \label{fig:result}
+\end{figure}
 
-从图** 的分布上我们可以看出，手指在屏幕上的停留时间主要集中在 ***，
-且Kolmogorov-Smirnov检验结果为**，呈**分布。
-对此，我们不妨将手指在屏幕上的平均停留时间设为 ***，故 DELAY 的值为 ***；
+从图\ref{fig:result} 的分布上我们可以看出，手指在屏幕上的停留时间主要集中在 260 ms 前后，呈对数正态分布。
+对此，我们不妨将手指在屏幕上的平均停留时间设为 250 ms，故 DELAY 的值为 250ms；
+另外，设 Force Touch 总持续时间为普通触摸事件的五倍，故 DURATION 的值为 1000ms；
+这时触发 Force Touch 操作所需要的总时间为 1.25 秒。
 对 Force Touch 而言，考虑人类手指的按压力度变化，我们设其力度的变化率线性变化，
-这时能保证整条力度变化曲线为光滑曲线。另外，设 Force Touch 总持续时间为普通触摸事件的五倍。
+这时能保证整条力度变化曲线为光滑曲线。
 
 综上所述，记在一次按压中的按压时间为 $t_{\text{press}}$，
 则 Force Touch 可以使用公式\ref{formal:delay}进行模拟：
 \begin{equation}
 v_{F} =
     \begin{cases}
+        0    & \mbox{if $t_{\text{press}} < \text{DELAY}$} \\
         \left(\frac{t_{\text{press}}-\text{DELAY}}{\text{DURATION}}\right)^{2}
-             & \mbox{if $t_{\text{press}}-\text{DELAY}< \text{DURATION}$} \\
+             & \mbox{if 0 < $t_{\text{press}}-\text{DELAY} < \text{DURATION}$} \\
         1    & \mbox{Otherwise}
     \end{cases}
 \label{formal:delay}
 \end{equation}
-其中，$v_{F}$表示模拟的压力值，DELAY = **，DURATION = **，两者单位为毫秒，图像如图**所示。
-%其中，$v_{F}$表示模拟的压力值，DELAY = 250，DURATION = 1000，两者单位为毫秒。
+其中，$v_{F}$表示模拟的压力值，DELAY = 250，DURATION = 1000，两者单位为毫秒(ms)，图像如图\ref{fig:ft-fig}所示。
 
-【缺函数图像，待补充】
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[domain = 0:5, xscale = 1, yscale = 1]
+    \draw [very thick, <->] (0, 5) node [left] {$v_{F}$}
+             -- (0, 0) -- (7.0, 0) node [below] {$t_{\text{press}}\text{(ms)}$};
+
+    \draw[domain=0:1, thick, smooth, color=red] plot(\x, 0);
+    \draw[domain=1:5, thick, smooth, color=red] plot(\x, {0.25*(\x-1)^2});
+    \draw[domain=5:7, thick, smooth, color=red] plot(\x, 4);
+
+    \node[below] at (1.0, 0.0) {$\text{\tiny DELAY}$};
+
+    \draw[thick, dashed] (0, 4) node [left] {1}
+           -- (5,4) -- (5,0) node [below] {$\text{\tiny DELAY+DURATION}$};
+
+    \draw[fill,color=red] (1,0) circle [radius=0.05];
+    \draw[fill,color=red] (5,4) circle [radius=0.05];
+\end{tikzpicture}
+\caption{Force Touch 仿真函数的图像}
+\label{fig:ft-fig}
+
+\end{figure}
 
 \subsection{Haptic 反馈设计}
 在 watchOS 中\footnote{本文写成时的 watchOS 版本为 2.2。}，
-根据开发文档\cite{WatchGuide:2016}显示Haptic Engine 一共能表达以下几种类型：
+根据开发文档\cite{WatchGuide:2016}显示Haptic Engine 一共能表达代码\ref{lst:haptic-define}所示的几种类型。
 
-\begin{lstlisting}
+\begin{lstlisting}[
+    language={Swift},
+    caption={\kaishu Haptic 反馈类型},
+    label={lst:haptic-define}
+]
 public enum WKHapticType : Int {
     case Notification
     case DirectionUp
@@ -124,17 +137,19 @@ Start表示切换到下一视图，Retry 恰好用于切换到上一视图的提
 \section{设计的完备性}
 \label{sec:completeless}
 
-本章中我们全面的对 Apple Watch 上的交互进行了重新设计，
-简化了元素与元素之间的交互逻辑，作为小结，如图\ref{fig:interaction}。
-在此套备择设计中，我们将原有的两层逻辑中十种不同交互逻辑通过简化为单层逻辑的八种，
-并且消除了接触式交互这一限制。
+
 
 \begin{figure}[H]
     \kaishu
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/interaction}
-    \caption{\kaishu \textbf{非接触式备择设计总览}：}
+    \includegraphics[width=0.5\textwidth]{figures/interaction}
+    \caption{\kaishu 非接触式备择设计总览}
     \label{fig:interaction}
 \end{figure}
+
+本章中我们全面的对 Apple Watch 上的交互进行了重新设计，
+简化了元素与元素之间的交互逻辑，作为小结，如图\ref{fig:interaction}。
+在此套备择设计中，我们将原有的两层逻辑中十种不同交互逻辑通过简化为单层逻辑的八种，
+并且消除了接触式交互这一限制。
 
 从图\ref{fig:interaction}中我们容易看出，备择设计在交互上是完备的，即从另一个角度实现了原交互的全部功能。
