@@ -36,6 +36,10 @@ watchOS 是运行在 Apple Watch 上的操作系统。watchOS 刚推出时，
 第三方 App 是作为 iOS 的应用扩展存在，手表端只负责对代码的执行结果进行展示，所有的代码都在 iOS 端执行。
 随着 watchOS 2 的发布，现在第三方 App 能够通过 WatchConnectivity 框架在 watchOS 和 iOS 之间进行数据通信。
 
+使用 WatchConnectivity 框架执行的通信必须经过 watchOS 和 iOS 系统级的中转。这些通信在 iOS 端和 watchOS 端开启一个会话，因此若需要使用 WatchConnectivity，就必须要实现 WCSessionDelegate 代理协议。
+
+另外，在 WatchConnectivity 中存在两种不同的通信模式：后台模式和交互式消息模式。在后台模式中，操作系统会将一些非及时消息发送到等待消息队列，并在 App 被唤醒时进行处理；而在交互是消息模式中，由于通信必须经过系统级的中转，因此 watchOS 和 iOS 之间的及时通信，仅当检查到 WCSession.defaultSession().reachable 为真时，才能够进行通信。值得一提的时，在交互式消息中，即便 iOS 端程序尚未启动，在 Apple Watch 中依然能够从后台将 iOS 应用唤醒。
+
 \section{架构设计}
 \label{sec:arch-design}
 
@@ -120,6 +124,7 @@ Apple Watch 只能在和与其配对的 iPhone 失去连接，且同时处于已
         pinchIndex     & int    & 执行捏合操作的手指，从食指到小指分别为1至4，-1表示当前没有手指进行捏合 \\
         pinchStrength  & double & 拇指与食指捏合的程度，为从0至1连续变化的浮点数 \\
         grabStrength   & double & 五只手指合并的程度，为从0至1连续变化的浮点数 \\
+        forceValue     & double & 触发 Force Touch 后手指按压力度的模拟值\\
         \bottomrule
     \end{tabular}
     \caption{交互字段说明}
