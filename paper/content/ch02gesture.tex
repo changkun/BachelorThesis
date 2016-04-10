@@ -7,7 +7,7 @@
 
 传统交互上苹果公司认为在 Apple Watch 的小屏幕上实施超过两个接触点的点按行为是严重影响用户交互的，
 因此 Apple Watch 上的触摸屏没有沿用多点触控的方案。
-并且，在屏幕的普通操作中，只有基础点按和四个方向上的滑动，如图\ref{fig:gesture}所示。
+并且，在屏幕的普通操作中，只有基础点按和四个方向上的滑动，如图\ref{fig:gesture}所示\footnote{图片源：\url{https://developer.apple.com/watch/human-interface-guidelines/}}。
 
 \begin{figure}[H]
     \kaishu
@@ -51,7 +51,8 @@ Apple Watch 在处理目标点按时的的低可用性问题时应用了滑动�
 \section{特有交互}
 
 Apple Watch 在传统触摸屏交互的基础上引入了三个全新的交互硬件，
-分别是Digital Crown、Force Touch 和 Haptic Engine。
+分别是Digital Crown、Force Touch 和 Haptic Engine，如图\ref{fig:special}所示\footnote{图片修改自：\url{https://developer.apple.com/watch/human-interface-guidelines/}}
+。
 
 \begin{figure}[H]
     \kaishu
@@ -104,7 +105,8 @@ Haptic Engine 能够在不同用户之间分享彼此的心跳频率时自行调
 
 \section{其他交互}
 
-除了以上的基础交互手段外，在 Apple Watch 上还有两个最高优先级的交互方式，如图\ref{fig:others}所示。
+除了以上的基础交互手段外，在 Apple Watch 上还有两个最高优先级的交互方式，如图\ref{fig:others}所示\footnote{图片源：\url{https://developer.apple.com/watch/human-interface-guidelines/}}。
+。
 
 \begin{figure}[H]
     \kaishu
@@ -114,6 +116,8 @@ Haptic Engine 能够在不同用户之间分享彼此的心跳频率时自行调
     \caption{\textbf{其他交互}：侧面按钮的存在提高将一项功能提升到了最高的呼出级别，而 Siri 是 Apple Watch 上唯一的文字输入入口。}
     \label{fig:others}
 \end{figure}
+
+Apple Watch 侧面的两个按钮实际上是 Apple Watch 里所有交互中优先级最高的交互方式，这是因为无论用户在 watchOS 中所处的位置在哪儿，都能够通过这两个方法执行固定的交互指令(注意，单次点按 Digital Crown 并不能够作为最高优先级的交互，因为单次点按 Digital Crown 后用户所处的位置可能不唯一：可能会处于表盘，也可能处于 App 总界面)。
 
 \subsection{侧面按钮}
 
