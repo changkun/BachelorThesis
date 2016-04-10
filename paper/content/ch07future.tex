@@ -67,7 +67,7 @@
 
 本文在手部信息的检测上使用了 LeapMotion 硬件作为解决问题的关键，但实际上 LeapMotion 是一项作为桌面端交互或虚拟现实交互的输入设备而产生的，依赖视觉方法的 LeapMotion 并不完全适合作为用户的一个随身穿戴部件植入，因为视觉方法的依赖性很强。考虑手表本身的设计，我们可以考虑更换一种对手势进行识别的方式。
 
-Myo \cite{Myo:2016} 是一个固定在手臂上的对手部肌肉电信号进行感知从而进行手势识别的装置，如图\ref{fig:myo}所示。Myo 通过内置的 Wi-Fi 装置将识别的电信号传递给其他的连接部件，Myo 开放了并规范化了对手部肌肉电信号时间序列的识别协议，这意味着我们可以对这种表现模式的手势数据进行分析，进而逐步完善手势系统。
+Myo \cite{Myo:2016} 是一个固定在手臂上的对手部肌肉电信号进行感知从而进行手势识别的装置，如图\ref{fig:myo}所示\footnote{图片源：\url{https://www.myo.com}}。Myo 通过内置的 Wi-Fi 装置将识别的电信号传递给其他的连接部件，Myo 开放了并规范化了对手部肌肉电信号时间序列的识别协议，这意味着我们可以对这种表现模式的手势数据进行分析，进而逐步完善手势系统。
 
 \begin{figure}[H]
     \kaishu
@@ -83,7 +83,7 @@ Myo 的设计实际上完全符合手表的人体工程学设计，因为手表�
 
 在 \ref{sub:im-arch} 一节中，我们讨论了通信架构的设计，实际上这一设计也适用于一般情况。
 
-图 \ref{fig:universe-arch} 为对前文中适用于手表备择设计的通信架构的推广设计，在服务端和客户端引入了交互感知中心（Interaction Perception Center, IPC 是一个基于桌面端和移动端设备的跨平台交互解决方案）服务\cite{Changkun:2015ipc}。当我们将 IPC 这系统级的交互模型引入时，实现 IPC 核心服务的传感器处理协议（Sensor Handle Protocol, SH协议）能够屏蔽掉硬件之间的差异，统一的将传感器形式化、标准化，而通过跨设备交互协议（Cross-Device Interaction Protocol, CDI协议）能实现用户设备与 IPC 服务之间的通信。
+图 \ref{fig:universe-arch} 为对前文中适用于手表备择设计的通信架构的推广设计，并在服务端和客户端引入了交互感知中心（Interaction Perception Center, 在 IPC 中我们给出了一个基于桌面端和移动端设备的跨平台交互解决方案）服务\cite{Changkun:2015ipc}。当我们将 IPC 这系统级的交互模型引入时，实现 IPC 核心服务的传感器处理协议（Sensor Handle Protocol, SH协议）能够屏蔽掉硬件之间的差异，统一的将传感器形式化、标准化，而通过跨设备交互协议（Cross-Device Interaction Protocol, CDI协议）能实现用户设备与 IPC 服务之间的通信。
 
 \begin{figure}[H]
     \kaishu
