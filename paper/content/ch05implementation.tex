@@ -65,7 +65,6 @@ sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
 从 iOS 9 开始， iOS 对网络访问引入了 App Transport Security (ATS) 特性，这使得在默认状态下 iOS 应用无法发起非安全的网络请求(如 HTTP)。
 需要进行下列两个步骤配置项目，结果如图\ref{fig:config}所示：
 
-【以下内容还在调整，可能会根据需求更换为 WebSocket】
 \begin{enumerate}
     \item 在Info.plist中添加NSAppTransportSecurity类型Dictionary；
     \item 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
@@ -80,8 +79,6 @@ sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
 \end{figure}
 
 \section{服务端编码}
-
-【以下内容还在调整，可能会根据需求更换为 WebSocket】
 
 实现一个端口为 10086 的 HTTP 服务器是第一步，如代码\ref{lst:http}。
 \begin{lstlisting}[
