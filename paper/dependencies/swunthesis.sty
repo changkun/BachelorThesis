@@ -137,15 +137,16 @@
 \renewenvironment{abstract}[1]{
 \addtolength{\leftskip}{1.1cm}
 \addtolength{\rightskip}{1.1cm}
-%\thispagestyle{empty}
+% \thispagestyle{empty}
 %\newcounter{pages}{1}
-\addtocounter{page}{-1}
+\addtocounter{page}{-4}
 \vspace*{1cm}
 \centerline{\heiti \zihao{-3} {摘要}}
 \vspace{1.2cm}
 \kaishu \zihao{5}
 \keyword{#1} }
-{\\\par \textbf{关键词 } \varKeyword \clearpage}
+{\\\par \textbf{关键词 } \varKeyword
+\clearpage~~\thispagestyle{empty}\clearpage}
 \newenvironment{abstractEng}[1]{
 \addtolength{\leftskip}{1.1cm}
 \addtolength{\rightskip}{1.1cm}
@@ -156,7 +157,8 @@
 \vspace{1.2cm}
 \kaishu \zihao{5}
 \keyword{#1} }
-{\\\par \textbf{Keywords} \varKeyword \clearpage}
+{\\\par \textbf{Keywords} \varKeyword
+\clearpage~~\thispagestyle{empty}\clearpage}
 
 \usepackage{xcolor}
 \usepackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
@@ -168,7 +170,7 @@
 \usepackage{array} %
 \newcommand{\makecover}{
 \thispagestyle{empty}
-\addtocounter{page}{-1}
+\addtocounter{page}{0}
 \vspace*{0cm}
 \centerline{\includegraphics[height=1.6cm]{./dependencies/title}}
 \vspace*{1.2cm}
@@ -205,6 +207,11 @@
 \vfill
 \centerline{\kaishu \zihao{3}\varDate}
 \clearpage
+~~\thispagestyle{empty}
+\clearpage
+
+\tableofcontents
+\cleardoublepage
 }
 
 
@@ -289,3 +296,5 @@ headsep=0.5cm,          % <-- and this
 \usepackage{float}
 \usepackage{subfigure}
 \usepackage{tikz}
+\usepackage{indentfirst}
+\usepackage{cite}

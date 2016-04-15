@@ -106,18 +106,23 @@ LeapMotion 软件本身会对所识别手部进行重新建模，并提供其骨
     caption={\kaishu 手指点按识别},
     label={lst:pincher}
 ]
-pinchIndex = function findPinchingFinger(hand, closest) {
+function findPinchingFinger(hand, closest){
     var pincher;
-    for(var f = 1; f < 5; f++) {
+    //var closest = 500;
+    for(var f = 1; f < 5; f++)
+    {
         current = hand.fingers[f];
-        distance = leap.vec3.distance(
-            hand.thumb.tipPosition,
-            current.tipPosition
-        );
-        if(current != hand.thumb && distance < closest) {
+        distance = leap.vec3.distance(hand.thumb.tipPosition, current.tipPosition);
+        if(current != hand.thumb && distance < closest)
+        {
             closest = distance;
             pincher = current;
         }
+    }
+    // mark time of start pinch
+    if (pincher.type != pf.pinchIndex) {
+        // pf is a gloable value for message protocol
+        pf.pinchTimeStramp = Date.now();
     }
     return pincher;
 }
@@ -129,8 +134,20 @@ pinchIndex = function findPinchingFinger(hand, closest) {
     caption={\kaishu Force Touch 仿真},
     label={lst:ft-simu}
 ]
-forceValue = function(……){
-    ……【待补充】
+function forceValue(){
+    // pf is the global message protocol object
+    if (pf.pinchTimeStramp === 0) {
+        return -1;
+    }
+
+    var delay = 250;
+    var duration = 1000;
+
+    // calculate force touch value
+    var value = ((Date.now() - pf.pinchTimeStramp) - delay)/duration;
+    var force = (value >=1 ) ? 1 : value*value;
+
+    return force;
 }
 \end{lstlisting}
 
@@ -143,7 +160,7 @@ forceValue = function(……){
 \centering
 \subfigure[滑动前]{\includegraphics[width=0.35\textwidth]{figures/pinch-start}\label{fig: pinch-start}}
 \subfigure[滑动后]{\includegraphics[width=0.35\textwidth]{figures/pinch-end}\label{fig:pinch-end}}
-\caption{\textbf{双指滑动}：双指滑动可以通过手指和手掌的指向向量设计触发事件}
+\caption{\textbf{双指滑动}：双指滑动可以通过手指和手掌的指向向量设计触发事件，图中的 3D 模型使用 Leap Motion Visualizer 制作}
 \label{fig:pinch}
 \end{figure}
 
@@ -154,8 +171,16 @@ forceValue = function(……){
     caption={\kaishu 手指点按识别},
     label={lst:swipe}
 ]
-pinchStrength = function findPinchStrength(hand, closest) {
-    ……【待补充】
+function findPinchingStrength(hand) {
+    var thumbDirection = hand.fingers[0].direction;
+    var indexDirection = hand.fingers[1].direction;
+    var dotProduct = leap.vec3.dot(thumbDirection, indexDirection);
+    // remove grab condition
+    if (dotProduct < 0.7 && hand.grabStrength < 0.85) {
+        return hand.pinchStrength;
+    } else {
+        return -1;
+    }
 }
 \end{lstlisting}
 
@@ -173,9 +198,9 @@ grabStrength = function getGrabStength(frame) {
 }
 \end{lstlisting}
 
-\section{手表端编码}
+\section{客户端编码}
 
-手表端编码的两个重要关键就是通信层和视图控制层的编码，通信层又包含 iOS 端和服务端之间通信以及 iOS 端和 watchOS 端间通信，我们使用 Swift \footnote{本文写成时的 Swift 版本为 2.2。}来完成相关编码\cite{swift2015, swiftoc2015}。
+客户端编码的两个重要关键就是通信层和视图控制层的编码，通信层又包含 iOS 端和服务端之间通信以及 iOS 端和 watchOS 端间通信，我们使用 Swift \footnote{本文写成时的 Swift 版本为 2.2。}来完成相关编码\cite{swift2015, swiftoc2015}。
 
 \subsection{视图控制层编码}
 
@@ -247,3 +272,5 @@ extension InterfaceController: WCSessionDelegate {
     }
 }
 \end{lstlisting}
+
+\cleardoublepage

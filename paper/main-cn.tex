@@ -1,13 +1,11 @@
-\documentclass[a4paper]{ctexrep}
+\documentclass[a4paper,twoside]{ctexrep}
 \usepackage{dependencies/swunthesis}
 
 \include{content/info}
 
 \begin{document}
- 
+
 \makecover
-\tableofcontents\thispagestyle{empty}
-\clearpage
 
 % Main Contents
 \include{content/abstract}
@@ -19,7 +17,7 @@
 \include{content/ch06test}
 \include{content/ch07future}
 
-\cleardoublepage
+\include{content/appendix}
 
 % Bib
 \nocite{*}
