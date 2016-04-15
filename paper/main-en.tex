@@ -1,22 +1,22 @@
 \documentclass[a4paper]{ctexrep}
-\usepackage{dependencies/swunthesis}
+\usepackage{dependencies/swunthesis-en}
 
 \include{content/info}
 
 \begin{document}
 
 \makecover
-\tableofcontents\thispagestyle{emply}
+\tableofcontents%\thispagestyle{emply}
 \clearpage
 
-\include{content/abstract}
-\include{content/ch01intro}
-\include{content/ch02gesture}
-\include{content/ch03interaction}
-\include{content/ch04system}
-\include{content/ch05implementation}
-\include{content/ch06test}
-\include{content/ch07future}
+\include{content-en/abstract}
+\include{content-en/ch01intro}
+\include{content-en/ch02gesture}
+\include{content-en/ch03interaction}
+\include{content-en/ch04system}
+\include{content-en/ch05implementation}
+\include{content-en/ch06test}
+\include{content-en/ch07future}
 
 \cleardoublepage
 
@@ -25,10 +25,11 @@
 \bibliographystyle{dependencies/bstutf8}
 \clearpage
 \phantomsection
-\addcontentsline{toc}{chapter}{参考文献} % 向目录中添加参考文献条目
+\addcontentsline{toc}{chapter}{Bibliography} % 向目录中添加参考文献条目
+\section*{References}
 \bibliography{references/main}
 
 % Thanks
-\include{content/thanks}
+\include{content-en/thanks}
 
 \end{document}
