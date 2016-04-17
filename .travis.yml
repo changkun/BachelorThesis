@@ -1,8 +1,16 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get update
-- sudo apt-get -y install texlive-full
-- sudo tex -v
+    - sudo apt-get update
+    - sudo apt-get -y install texlive-full
+    - sudo mkdir -p /usr/share/fonts/opentype/
+    - sudo mv ./paper/fonts/AdobeFangsongStd-Regular.otf /usr/share/fonts/opentype/
+    - sudo mv ./paper/fonts/AdobeHeitiStd-Regular\ \(v5.010\).otf /usr/share/fonts/opentype/
+    - sudo mv ./paper/fonts/AdobeKaitiStd-Regular\ \(v5.010\).otf /usr/share/fonts/opentype/
+    - sudo mv ./paper/fonts/AdobeSongStd-Light\ \(v5.010\).otf /usr/share/fonts/opentype/
+    - sudo mkfontscale
+    - sudo mkfontdir
+    - sudo fc-cache -fv
+    - fc-list :lang=zh
 script:
     - cd paper/ && make clean && make
