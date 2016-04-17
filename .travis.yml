@@ -1,12 +1,8 @@
+sudo: required
+dist: trusty
 before_install:
 - sudo apt-get update
 - sudo apt-get -y install texlive-full
-
-sudo: false
-addons:
-  apt:
-    packages:
-      - texlive
-      - texlive-latex-extra
+- sudo tex -v
 script:
     - cd paper/ && make clean && make
