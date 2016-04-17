@@ -1,0 +1,8 @@
+sudo: false
+addons:
+  apt:
+    packages:
+      - texlive
+      - texlive-latex-extra
+script:
+    - cd paper/ && make
