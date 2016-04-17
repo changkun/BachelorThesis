@@ -204,7 +204,45 @@ grabStrength = function getGrabStength(frame) {
 
 \subsection{视图控制层编码}
 
-【待补充】
+视图控制层是对交互消息本身的一个响应，这里的代码以双指滑动的 Digital Crown 表达为例，展示核心设计。
+
+在 Apple Watch 上实现 Picker 需要应用开发者自行加载相关资源，其代码段如代码\ref{lst:picker}所示。
+
+\begin{lstlisting}[
+    language={Swift},
+    caption={\kaishu 设置视图层 Picker},
+    label={lst:picker}
+]
+var images: [UIImage]! = []
+var pickerItems: [WKPickerItem]! = []
+for (var i=0; i<=MAX_NUM; i += 1) {
+    let name = "progress-\(i)"
+    images.append(UIImage(named: name)!)
+
+    let pickerItem = WKPickerItem()
+    pickerItem.title = "\(i)"
+    pickerItems.append(pickerItem)
+}
+let circleImages = UIImage.animatedImageWithImages(images, duration: 0.0)
+circleGroup.setBackgroundImage(circleImages)
+picker.setCoordinatedAnimations([circleGroup])
+picker.setItems(pickerItems)
+\end{lstlisting}
+
+而对于 Digital Crown 的表达，则是在通过网络层接收到交互信息 pinchStrength 后，将 0 至 1 的数值变换到 Picker 所拥有的 0 至 MAX\_NUM，然后通过设置 Picker 的选择项来操纵 UI 界面，如代码\ref{lst:ui-op}所示。
+
+\begin{lstlisting}[
+    language={Swift},
+    caption={\kaishu Picker UI 操纵},
+    label={lst:ui-op}
+]
+func indexSelect(message: InteractionMessage?) {
+    index = Int(message!.pinchStrength * MAX_NUM)
+    // haptic feedback
+    watchDevice.playHaptic(WKHapticType.DirectionUp)
+    picker.setSelectedItemIndex(index)
+}
+\end{lstlisting}
 
 \subsection{通信层编码}
 

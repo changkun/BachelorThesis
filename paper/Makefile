@@ -6,7 +6,6 @@ main-cn.pdf: main-cn.tex content/*
 	bibtex main-cn
 	xelatex --file-line-error --synctex=1 main-cn
 	xelatex --file-line-error --synctex=1 main-cn
-	open ./main-cn.pdf
 	make clean
 
 main-en.pdf: main-en.tex content/*
@@ -14,7 +13,6 @@ main-en.pdf: main-en.tex content/*
 	bibtex main-en
 	xelatex --file-line-error --synctex=1 main-en
 	xelatex --file-line-error --synctex=1 main-en
-	open ./main-en.pdf
 	make clean
 
 clean:
