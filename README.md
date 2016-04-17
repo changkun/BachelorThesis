@@ -1,5 +1,7 @@
 # 智能手表的非接触式备择交互模式的设计
 
+[![Build Status](https://travis-ci.com/changkun/BachelorThesis.svg?token=wRf5KPUizYFaNxwsZRsv&branch=master)](https://travis-ci.com/changkun/BachelorThesis)
+
 中文 | [English](./README-en.md)
 
 本项目中包含了个人毕业设计中的全部代码、文章及相关成果。
