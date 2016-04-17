@@ -5,4 +5,4 @@ addons:
       - texlive
       - texlive-latex-extra
 script:
-    - cd paper/ && make
+    - cd paper/ && make clean && make
