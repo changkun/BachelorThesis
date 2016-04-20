@@ -14,7 +14,7 @@ LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不�
 首先，在应用程序中引入 Leap SDK 需要在相应桌面端安装 LeapMotion 宿主程序，进而才能使用 LeapMotion 相关的 API。
 
 其次，在 Node App 的 package.json 中添加 LeapJS 依赖：
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 "dependencies": {
     "leapjs": "^0.6.4"
 }
@@ -26,23 +26,23 @@ LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不�
 受到 LeapMotion 自身的限制\cite{Leap:2016}，WebSocket 服务并非默认的向非本地访问开放，因此需要将 Leap 配置启用非本地客户端连接。
 
 这需要对 LeapMotion 的配置文件进行修改。在修改配置之前，需要关闭 LeapMotion 的相关服务。在 Mac 中，使用下面的命令关闭 LeapMotion 的守护进程：
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 sudo launchctl unload /Library/LaunchDaemons/com.leapmotion.leapd.plist
 \end{lstlisting}
 
 接下来我们需要修改 LeapMotion 的配置文件，根据 LeapMotion 的官方文档显示，Leap 包含两个不同的配置，其中控制面板配置的优先级最高，因此我们需要下面这个目录下：
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 $HOME/Library/Application\ Support/Leap\ Motion
 \end{lstlisting}
 
 找到 config.json 的修改配置，编辑 config.json 文件，并在 configuration 字段中的任意位置添加一条：
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 "websockets_allow_remote": true
 \end{lstlisting}
 
 最终得到：
 
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 "configuration": {
     "websockets_allow_remote": true,
     "background_app_mode": 2,
@@ -56,7 +56,7 @@ $HOME/Library/Application\ Support/Leap\ Motion
 
 保存退出，重新启动 LeapMotion 服务，便完成了 LeapMotion 的相关配置：
 
-\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{White},numbers=none]
+\begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
 sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
 \end{lstlisting}
 

@@ -1,0 +1,32 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{tikz,pgflibraryshapes}
+\usepackage{amsmath}
+\usetikzlibrary{arrows, calc, decorations.pathmorphing}
+\usepackage{mymacros}
+\usepackage[psfixbb,graphics,tightpage,active]{preview}
+
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\begin{document}
+
+\begin{tikzpicture}[domain = 0:5, xscale = 1, yscale = 1]
+    \draw [very thick, <->] (0, 5) node [left] {$v_{F}$}
+             -- (0, 0) -- (7.0, 0) node [below] {$t_{\text{press}}\text{(ms)}$};
+
+    \draw[domain=0:1, thick, smooth, color=red] plot(\x, 0);
+    \draw[domain=1:5, thick, smooth, color=red] plot(\x, {0.25*(\x-1)^2});
+    \draw[domain=5:7, thick, smooth, color=red] plot(\x, 4);
+
+    \node[below] at (1.0, 0.0) {$\text{\tiny DELAY}$};
+
+    \draw[thick, dashed] (0, 4) node [left] {1}
+           -- (5,4) -- (5,0) node [below] {$\text{\tiny DELAY+DURATION}$};
+
+    \draw[fill,color=red] (1,0) circle [radius=0.05];
+    \draw[fill,color=red] (5,4) circle [radius=0.05];
+\end{tikzpicture}
+
+\end{document}
