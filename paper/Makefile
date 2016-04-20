@@ -2,17 +2,11 @@ cn: main-cn.pdf
 en: main-en.pdf
 
 main-cn.pdf: main-cn.tex content/*
-	xelatex --file-line-error --synctex=1 main-cn
-	bibtex main-cn
-	xelatex --file-line-error --synctex=1 main-cn
-	xelatex --file-line-error --synctex=1 main-cn
+	latexmk -xelatex main-cn
 	make clean
 
 main-en.pdf: main-en.tex content/*
-	xelatex --file-line-error --synctex=1 main-en
-	bibtex main-en
-	xelatex --file-line-error --synctex=1 main-en
-	xelatex --file-line-error --synctex=1 main-en
+	latexmk -xelatex
 	make clean
 
 clean:
