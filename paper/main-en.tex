@@ -1,14 +1,13 @@
-\documentclass[a4paper]{ctexrep}
+\documentclass[a4paper,twoside,fontset=none]{ctexrep}
 \usepackage{dependencies/swunthesis-en}
 
-\include{content/info}
+\include{content-en/info}
 
 \begin{document}
 
 \makecover
-\tableofcontents%\thispagestyle{emply}
-\clearpage
 
+% Main Contents
 \include{content-en/abstract}
 \include{content-en/ch01intro}
 \include{content-en/ch02gesture}
@@ -18,15 +17,15 @@
 \include{content-en/ch06test}
 \include{content-en/ch07future}
 
-\cleardoublepage
+\include{content-en/appendix}
 
 % Bib
 \nocite{*}
 \bibliographystyle{dependencies/bstutf8}
 \clearpage
 \phantomsection
-\addcontentsline{toc}{chapter}{Bibliography} % 向目录中添加参考文献条目
-\section*{References}
+\addcontentsline{toc}{chapter}{References} % 向目录中添加参考文献条目
+\kaishu
 \bibliography{references/main}
 
 % Thanks
