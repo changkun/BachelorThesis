@@ -10,6 +10,6 @@ main-en.pdf: main-en.tex content/*
 	make clean
 
 clean:
-	rm -f content/*.aux content-en/*.aux *.aux *.log *.toc *.glo *.idx *.ilg *.out *.bbl *.thm *.blg *.lot *.lof *.synctex.gz
+	rm -f *.fdb_latexmk *.fls content/*.aux content-en/*.aux *.aux *.log *.toc *.glo *.idx *.ilg *.out *.bbl *.thm *.blg *.lot *.lof *.synctex.gz
 	touch main-en.tex
 	touch main-cn.tex
