@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <string>
-#include <stdio.h>
-#include <assert.h>
-#include <stdint.h>
+#include <cstdio>
+#include <cassert>
+#include <cstdint>
 
 #include <sys/types.h>
 #include <sys/stat.h>

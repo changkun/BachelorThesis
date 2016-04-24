@@ -4,22 +4,18 @@
 
 \subsection{LeapMotion \& LeapJS}
 
-% LeapMotion \ cite {Leap: 2016} is a general term for a hardware input device and its software,
-% Its hardware built two depth camera and an infrared detector can detect the hand within the field of view,
-% Part of its software with built-in model for the detection of bone re-modeling of the hand, and then complete the behavior of high-precision hand
-% \ Footnote {LeapMotion claims official recognition accuracy of 0.01mm,
-% Document \ cite {weichert2013analysis, gdu2016} analysis showed LeapMotion actual accuracy of 0.2 mm or so. }
-% Recognition.
-LeapMotion \cite{Leap:2016} is a general term for a hardware input device and its software, its hardware built by two depth camera and an infrared detector that can detect the hand within the field of view; its software built-in a skeleton model of hands for hand reconstruct\footnote{ LeapMotion's official accuracy is 0.01 mm, but \cite{weichert2013analysis, gdu2016} report its actural accuracy is 0.2 mm}.
+
+LeapMotion \cite{Leap:2016} is a general term for a hardware input device and its software, its hardware built by two depth camera and an infrared detector that can detect the hand within the field of view; its software built-in a skeleton model of hands for hand reconstruct\footnote{ LeapMotion's official accuracy is 0.01 mm, but \cite{weichert2013analysis, gdu2016} report its actual accuracy is 0.2 mm}.
 %LeapMotion \cite{Leap:2016}是一个硬件输入设备和其自身软件的一个总称，
 %其硬件中内置的两颗深度摄像头和一个红外探测器可以对视野内的手检测，
 %其软件部分利用内置的骨骼模型对检测的手部进行重新建模，进而完成手行为的高精度
 %\footnote{ LeapMotion 的官方宣称的识别精度为 0.01mm，
 %文献\cite{weichert2013analysis, gdu2016} 分析表明 LeapMotion 的实际精度在 0.2 mm 左右。}
 %识别。
+
 LeapMotion SKD provides two varieties of API for getting the LeapMotion data: a native interface and a WebSocket interface, WebSocket provides JavaScript interface in browser environment. It is conforms to RFC6455\footnote{\url{http://tools.ietf.org/html/rfc6455}}, and running on desktop default port 6437.
 %LeapMotion SDK 有两种风格的 API 可以用于获取 LeapMotion 提供的手部数据：
-%本地接口及 WebSocket 接口，WebSocket 接口便其提供了浏览器环境中的 JavaScipt 接口。
+%本地接口及 WebSocket 接口，WebSocket 接口便其提供了浏览器环境中的 JavaScript 接口。
 %LeapMotion 的 WebSocket 服务遵循 RFC6455
 %\footnote{\url{http://tools.ietf.org/html/rfc6455}}，
 %运行在连接 LeapMotion 硬件的桌面端的 6437 端口。
@@ -31,13 +27,13 @@ With NodeJS, LeapJS also can running on server side, thus we can also processing
 %使用 LeapJS 可以让 LeapMotion 与网页前端进行通信，此框架可以用来处理接受 LeapMotion JSON 消息。
 %但随着 NodeJS 的存在，LeapJS 也能够运行在服务端，
 %因此我们也能够在服务端使用 JavaScript 处理 LeapMotion 消息。
-Leap API gives a Frame object, which contains a Hand object if the hand of users can be detected in LeapMotion field of view. LeapMotion through its buit-in model of hands, reconstruct hands object and then provide its to developers.
+Leap API gives a Frame object, which contains a Hand object if the hand of users can be detected in LeapMotion field of view. LeapMotion through its built-in model of hands, reconstruct hands object and then provide its to developers.
 for example, it provides hand direction, hand finger direction, hand position in LeapMotion coordinate system.
 %Leap API 以 Frame 为对象，当可被检测的手出现在 LeapMotion 视野内时，
 %深度摄像头捕捉到的每个 Frame 都能够访问到一个 Hand 对象。
 %Leap 通过对手部的重新建模，将当前帧的手部信息提供给开发者，
 %例如当前手的指向、当前手在 LeapMotion 坐标系统下的位置。
-With LeapMotion, developer and researcher can avoid the basic image segement works and other stuff, them keep focus on gesture algorithm\cite{garber2013gestural,xusuibin2015,panjiajia2015,huhong2015,marin2014hand}.
+With LeapMotion, developer and researcher can avoid the basic image segment works and other stuff, them keep focus on gesture algorithm\cite{garber2013gestural,xusuibin2015,panjiajia2015,huhong2015,marin2014hand}.
 %借助 LeapMotion 能够省去开发者的手部检测和识别的部分基础工作，更多的关注于手势算法的研究\cite{garber2013gestural,xusuibin2015,panjiajia2015,huhong2015,marin2014hand}。
 
 In addition, 3D gesture already gains its application in simple method, \cite{zaicti2015free} gives a LeapMotion control interaction for TV.
@@ -45,17 +41,17 @@ In addition, 3D gesture already gains its application in simple method, \cite{za
 
 \subsection{watchOS \& WatchConnectivity}
 
-watchOS is the operating system that runs on the Apple Watch. When watchOS just released, applications only as an extension for iOS App, watchOS only illustrate annimations, all code runs on iOS.
+watchOS is the operating system that runs on the Apple Watch. When watchOS just released, applications only as an extension for iOS App, watchOS only illustrate animations, all code runs on iOS.
 %watchOS 是运行在 Apple Watch 上的操作系统。watchOS 刚推出时，
 %第三方 App 是作为 iOS 的应用扩展存在，手表端只负责对代码的执行结果进行展示，所有的代码都在 iOS 端执行。
 
 With lunching of watchOS 2, now applications can use WatchConnectivity framework to pass data between iOS and watchOS.
 %随着 watchOS 2 的发布，现在第三方 App 能够通过 WatchConnectivity 框架在 watchOS 和 iOS 之间进行数据通信。
 
-WatchConnectivity framework aims to makes message between iOS and watchOS to be a message in system level, developer shouldn't care much about it. These communication will start a seesion and only WCSession.defaultSession.reachable is true, the dilivery can be started. So if we would use WatchConnectivity, we must implement WCSessionDelegate protocol.
+WatchConnectivity framework aims to makes message between iOS and watchOS to be a message in system level, developer shouldn't care much about it. These communication will start a session and only WCSession.defaultSession.reachable is true, the delivery can be started. So if we would use WatchConnectivity, we must implement WCSessionDelegate protocol.
 %使用 WatchConnectivity 框架执行的通信必须经过 watchOS 和 iOS 系统级的中转。这些通信在 iOS 端和 watchOS 端开启一个会话，因此若需要使用 WatchConnectivity，就必须要实现 WCSessionDelegate 代理协议。
 
-Besides, WatchConnectivity contains two differnt communication module: backgroung module and interactive module. In backgroung module, OS will push the message into a queue, then process it when App wake up; In interactive module, message must trasfer through OS and it is an immedientely communication, only happens when WCSession.defaultSession().reachable is true.
+Besides, WatchConnectivity contains two different communication module: background module and interactive module. In background module, OS will push the message into a queue, then process it when App wake up; In interactive module, message must transfer through OS and it is an immediately communication, only happens when WCSession.defaultSession().reachable is true.
 
 It is worth mentioning that, in interactive module, even if the iOS client program has not yet started, the Apple Watch is still able to wake up an iOS App from background.
 %另外，在 WatchConnectivity 中存在两种不同的通信模式：后台模式和交互式消息模式。在后台模式中，操作系统会将一些非及时消息发送到等待消息队列，并在 App 被唤醒时进行处理；而在交互是消息模式中，由于通信必须经过系统级的中转，因此 watchOS 和 iOS 之间的及时通信，仅当检查到 WCSession.defaultSession().reachable 为真时，才能够进行通信。值得一提的时，在交互式消息中，即便 iOS 端程序尚未启动，在 Apple Watch 中依然能够从后台将 iOS 应用唤醒。
@@ -66,7 +62,7 @@ It is worth mentioning that, in interactive module, even if the iOS client progr
 \subsection{Communication Structure}
 \label{sub:im-arch}
 
-watchOS splited from iOS App Extension since 2.0 version, since then, watchOS can actrully excute code on Apple Watch, that make watchOS App can management communication\cite{WatchGuide:2016} between iOS App and itself, the structure as illustrate on \ref{fig:watch-phone}. This makes timely communication with the outside world be possible.
+watchOS was split from iOS App Extension since 2.0 version, since then, watchOS can actually execute code on Apple Watch, that make watchOS App can management communication\cite{WatchGuide:2016} between iOS App and itself, the structure as illustrate on Figure \ref{fig:watch-phone}. This makes timely communication with the outside world be possible.
 %watchOS 从 2.0 开始从 iOS App Extension 中剥离开来，将 Watch App 部分全部移至 watchOS 端，
 %这时这部分代码在手表端具备了可执行的权限，因此将 watchOS 从 1.0 中的单向接收 iOS 端的系统级的通信，
 %转变为第三方 App 执行管理\cite{WatchGuide:2016}，如图 \ref{fig:watch-phone} 所示。
@@ -102,7 +98,7 @@ Among this architecture, iOS App will be the bridge for watchOS App and server f
 
 \subsection{Client Structure}
 
-Client side includes iOS side and watchOS side, as shows on \ref{fig:client-arch}.
+Client side includes iOS side and watchOS side, as shows on Figure \ref{fig:client-arch}.
 %客户端包含 iOS 端和 watchOS 端两个部分，其架构设计如图 \ref{fig:client-arch} 所示。
 
 \begin{figure}[H]
@@ -115,7 +111,7 @@ Client side includes iOS side and watchOS side, as shows on \ref{fig:client-arch
 
 \subsection{Server Structure}
 
-Server side structure as its shown on Figure \ref{fig:server-arch}, the core mocule is Interaction Handle Layer, this layer process raw interaction data from sensors and post the interaction results to Request Handle layer then distribute it to suitable devices.
+Server side structure as its shown on Figure \ref{fig:server-arch}, the core module is Interaction Handle Layer, this layer process raw interaction data from sensors and post the interaction results to Request Handle layer then distribute it to suitable devices.
 %服务端的设计如图 \ref{fig:server-arch} 所示，其组件的核心是交互处理层，
 %该层负责对原始的交互数据进行加工处理为将要实施的交互消息，
 %然后将加工后的消息按消息协议封装好进而通过请求层分发给相应的请求对象。
@@ -124,7 +120,7 @@ Server side structure as its shown on Figure \ref{fig:server-arch}, the core moc
     \kaishu
     \centering
     \includegraphics[width=0.4\textwidth]{figures/server-arch}
-    \caption{\kaishu \textbf{Server side structure}: Interaction Handle Layer process raw interaction data, then post it to Request Handle Layer for data tranfer}
+    \caption{\kaishu \textbf{Server side structure}: Interaction Handle Layer process raw interaction data, then post it to Request Handle Layer for data transfer}
     \label{fig:server-arch}
 \end{figure}
 

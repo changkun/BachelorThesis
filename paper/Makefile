@@ -6,7 +6,7 @@ main-cn.pdf: main-cn.tex content/*
 	make clean
 
 main-en.pdf: main-en.tex content/*
-	latexmk -xelatex
+	latexmk -xelatex main-en
 	make clean
 
 clean:

@@ -2,15 +2,14 @@
 
 \section{Development Environment}
 
-Whatever client side or server side, there always framework dependended, so build development environment is inevitable. In this project, the server is encoded using NodeJS. With limited space, for basic NodeJS environment, such as common configuration tool, NPM package management are omitted in this thesis. Here we introduce the most important framework structure and build of this platform, LeapJS; On client side, we use Swift to code and we do not import any third party framework, but WatchConnectivity need to be use for communication\cite{WatchConnectivity:2016}.
+Whatever client side or server side, there always framework depended, so build development environment is inevitable. In this project, the server is encoded using NodeJS. With limited space, for basic NodeJS environment, such as common configuration tool, NPM package management are omitted in this thesis. Here we introduce the most important framework structure and build of this platform, LeapJS; On client side, we use Swift to code and we do not import any third party framework, but WatchConnectivity need to be use for communication\cite{WatchConnectivity:2016}.
 After iOS 9, every App in iOS need to use HTTPS request, but there is a way to configure HTTP request in iOS 9.
 %无论是手表端的还是服务端，都存在框架依赖，因此环境搭建不可避免。在本项目中，服务端使用 NodeJS 进行编码，限于篇幅，对 NodeJS 相关的基本环境，如 Node 本体，NPM 包管理等常见工具的配置在文中略去，这里主要介绍运行本平台最重要第三方 Leap Motion 环境；而在手表端中，虽然我们不依赖其他第三方框架，但由于 watchOS 自身的限制\cite{WatchConnectivity:2016} 在 watchOS 2 中我们需要使用 WatchConnectivity 框架与 iOS 应用本体进行数据通信。
 %由于 iOS 系统本身限制（iOS 9及以上）强制要求应用必须与 HTTPS 服务器进行通信，因此这里介绍在 iOS 9 中与 HTTP 服务器通信的配置方法。
 
-\subsection{Configuration of Locoal LeapMotion}
+\subsection{Configuration of Local LeapMotion}
 
-% LeapMotion provided in the Mac OS X development environment, and provides a variety of development language, based on the above discussion, we need to configure the server LeapMotion body and LeapJS.
-LeapMotion provids development environment in Mac OS X, and provides a variety of programming language. Based on above discussion, we need to configure the server LeapMotion body and LeapJS.
+LeapMotion provides development environment in Mac OS X, and provides a variety of programming language. Based on above discussion, we need to configure the server LeapMotion body and LeapJS.
 %LeapMotion 提供了在 Mac OS X 中的开发环境，并且提供了各种不同的开发语言，根据上文的讨论，我们需要在服务端配置 LeapMotion 本体以及 LeapJS。
 
 \textbf{1. Installation}
@@ -34,7 +33,7 @@ The next step is install LeapJS by npm install.
 By the limitations of LeapMotion\cite{Leap:2016}, WebSocket service doesn't open a non-local access in default setting, so we will need to configure Leap then enable non-local client connections.
 %受到 LeapMotion 自身的限制\cite{Leap:2016}，WebSocket 服务并非默认的向非本地访问开放，因此需要将 Leap 配置启用非本地客户端连接。
 
-This requires to configurate LeapMotion profile. Before we modify the configuration, we have to close LeapMotion related services. On Mac OS X, we use the following command to shut down LeapMotion daemon:
+This requires to configure LeapMotion profile. Before we modify the configuration, we have to close LeapMotion related services. On Mac OS X, we use the following command to shut down LeapMotion daemon:
 %这需要对 LeapMotion 的配置文件进行修改。在修改配置之前，需要关闭 LeapMotion 的相关服务。在 Mac 中，使用下面的命令关闭 LeapMotion 的守护进程：
 
 \begin{lstlisting}[frame=trBL,frameround=fttt,rulesepcolor=\color{white},numbers=none]
@@ -82,7 +81,7 @@ sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist
 From iOS 9. Apple introduced App Transport Security feature for iOS App, this causes iOS App could not access to the Interaction with HTTP requests.
 %从 iOS 9 开始， iOS 对网络访问引入了 App Transport Security (ATS) 特性，这使得在默认状态下 iOS 应用无法发起非安全的网络请求(如 HTTP)。
 
-Due to watchOS networking need iOS App to transfer its requests in the most of time, we need applying two more configuration steps, and the results shows on \ref{fig:config}.
+Due to watchOS networking need iOS App to transfer its requests in the most of time, we need applying two more configuration steps, and the results shows on Figure \ref{fig:config}.
 %需要进行下列两个步骤配置项目，结果如图\ref{fig:config}所示：
 
 \begin{enumerate}
@@ -194,7 +193,7 @@ In fact LeapMotion itself provides thumb and index finger pinch degree parameter
 \end{figure}
 
 
-Two finger swipe gesture shows on Figure \ref{fig:pinch}, when hand  presented as Figure \ref{fig:pinch-start}, the normal vector of palm and direction vector of index infer are parallel, thumb direction vector and palm normal vector are almost vertical, so we can use this caracter to trigger this events, as its illustrate on Code \ref{lst:swipe}.
+Two finger swipe gesture shows on Figure \ref{fig:pinch}, when hand  presented as Figure \ref{fig:pinch-start}, the normal vector of palm and direction vector of index infer are parallel, thumb direction vector and palm normal vector are almost vertical, so we can use this character to trigger this events, as its illustrate on Code \ref{lst:swipe}.
 %双指滑动手势如图\ref{fig:pinch}所示，当手呈现如图\ref{fig: pinch-start}所示手势时，食指的方向向量和手掌的法向量几乎平行，拇指的方向向量与手掌的法向量几乎垂直，故我们可以利用这个特点设计手势的触发事件。如代码\ref{lst:swipe}：
 
 \begin{lstlisting}[
@@ -217,7 +216,7 @@ function findPinchingStrength(hand) {
 
 \subsection{Grab}
 
-We don't need reimplement grab gesture, LeapMotion itself provides grab paremeter of a hand, we han straightly get this data from Frame object, as shown on Code \ref{lst:grab}.
+We don't need reimplement grab gesture, LeapMotion itself provides grab parameter of a hand, we can straightly get this data from Frame object, as shown on Code \ref{lst:grab}.
 %五指的合并不需要重新实现，LeapMotion 本身就提供了握拳程度的参数 grabStrength，我们可以直接从 Frame 对象中获取，如代码\ref{lst:grab}所示。
 
 \begin{lstlisting}[
@@ -237,10 +236,10 @@ The key of client encoding is the communication layer and view controller layer 
 
 \subsection{View Controller Layer}
 
-View Controller Layer is basiclly a response for interactive message, as an example, we shows the core code of design for two finger swipe gesture as a Digital Crown alternative design.
+View Controller Layer is basically a response for interactive message, as an example, we shows the core code of design for two finger swipe gesture as a Digital Crown alternative design.
 %视图控制层是对交互消息本身的一个响应，这里的代码以双指滑动的 Digital Crown 表达为例，展示核心设计。
 
-Picker class on Apple Watch need developer load resources themself, code as shown on Code \ref{lst:picker}.
+Picker class on Apple Watch need developer load resources themselves, code as shown on Code \ref{lst:picker}.
 %在 Apple Watch 上实现 Picker 需要应用开发者自行加载相关资源，其代码段如代码\ref{lst:picker}所示。
 
 \begin{lstlisting}[
@@ -264,7 +263,7 @@ picker.setCoordinatedAnimations([circleGroup])
 picker.setItems(pickerItems)
 \end{lstlisting}
 
-We mapping the pinchStrength value from [0,1] to [0, MAX\_NUM], then use setter function of Picker to mofify UI interface, as shown on Code \ref{lst:ui-op}/
+We mapping the pinchStrength value from [0,1] to [0, MAX\_NUM], then use setter function of Picker to modify UI interface, as shown on Code \ref{lst:ui-op}/
 %而对于 Digital Crown 的表达，则是在通过网络层接收到交互信息 pinchStrength 后，将 0 至 1 的数值变换到 Picker 所拥有的 0 至 MAX\_NUM，然后通过设置 Picker 的选择项来操纵 UI 界面，如代码\ref{lst:ui-op}所示。
 
 \begin{lstlisting}[
@@ -282,7 +281,7 @@ func indexSelect(message: InteractionMessage?) {
 
 \subsection{Communication Layer}
 
-To communicate with the server, we can use HTTP request from server to gesture data, which is in JSON format. In Code \ref{lst:connectserver}, completeFlag guarantees only after a previous request completes program will trriger next request out. The constructor of Gesture class will parsing JSON data and constract a Gesture object model from the data dictionary.
+To communicate with the server, we can use HTTP request from server to gesture data, which is in JSON format. In Code \ref{lst:connectserver}, completeFlag guarantees only after a previous request completes program will trigger next request out. The constructor of Gesture class will parsing JSON data and contract a Gesture object model from the data dictionary.
 %与服务端的通信通过 URL 请求服务端的手势数据，其结果为 JSON 格式数据。在代码\ref{lst:connectserver}中， completeFlag 保证了向服务器请求对象时仅在上一次请求完成后才能进行，而 Gesture 类的构造函数通过从 URL 中解析来的 JSON 数据字典构造 Gesture 对象模型。
 
 \begin{lstlisting}[
