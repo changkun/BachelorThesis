@@ -4,7 +4,8 @@
   "description": "A LeapMotion Gesture Server",
   "main": "server.js",
   "dependencies": {
-    "leapjs": "^0.6.4"
+    "leapjs": "^0.6.4",
+    "nodejs-websocket": "^1.5.0"
   },
   "devDependencies": {},
   "scripts": {

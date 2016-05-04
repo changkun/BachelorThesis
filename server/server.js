@@ -1,9 +1,22 @@
 // require('template/entry');
 
-var http = require('http'),
+var http  = require('http'),
     fs    = require('fs'),
     path  = require('path'),
-    leap  = require('leapjs');
+    leap  = require('leapjs'),
+    ws    = require('nodejs-websocket');
+
+// websocket?
+// var server = ws.createServer(function (conn) {
+//     console.log("New connection")
+//     conn.on("text", function(str) {
+//         console.log("received " + str);
+//         conn.sendText(str.toUpperCase()+"!!!")
+//     });
+//     conn.on("close", function(code, reason) {
+//         console.log("Connection closed")
+//     });
+// }).listen(12345);
 
 var hands = [];
 var fingers = [];
@@ -12,55 +25,27 @@ var strenth;
 var leapFrame;
 
 function PinchFinger() {
+    this.pinchTimeStramp = 0;
     this.pinchIndex    = -1;
     this.pinchStrength = 0;
     this.grabStrength  = 0;
+    this.forceValue = -1;
 }
 var pf = new PinchFinger();
 
-var option = {
-    key:  fs.readFileSync('./ssl/server.key'),
-    cert: fs.readFileSync('./ssl/server.crt')
-};
+
 // https server request handler
 function handler (req, res) {
-    // console.log(req.headers.host);
-    // console.log(req.url);
-    // console.log(req.method);
-    // console.log(req.httpVersion);
-
-    // console.log(leapFrame);
     res.writeHead(200);
-    // res.end(JSON.stringify(leapFrame));
-    // res.end('hello world');
     res.end(JSON.stringify(pf));
 }
 // var server = https.createServer(option, handler);
 http.createServer(handler).listen(10086);
-console.log("Server running at http://locoalhost:5637")
+console.log("Server running at http://locoalhost:10086")
 
 
 
-// Leap Processing
-// var controller = new leap.Controller({enableGesture: true});
-// controller.on('gesture', function(gesture) {
-//     console.log(gesture);
-//     if (gesture.type === 'swipe' && gesture.state === 'stop') {
-//         // && gesture.duration > 8000
-//         handleSwipeGesture(gesture);
-//     }
-// });
 
-// controller.connect();
-// leap.loop(function (frame) {
-//     if (frame.hands.length > 0) {
-//         var hand   = frame.hand[0];
-//         var finger = hand.fingers[0];
-//         if (frame.hands[0].fingers.length > 3) {
-//             // ...do something
-//         }
-//     }
-// });
 
 leap.loop({enableGesture: true},function(frame) {
 
@@ -70,17 +55,28 @@ leap.loop({enableGesture: true},function(frame) {
     if(frame.hands.length > 0) {
         var hand = frame.hands[0];
 
+        pf.pinchStrength = findPinchingStrength(hand);
+
         // 检测 pinch 手势
-        if(hand.pinchStrength > 0) {
-            var pinchingFinger = findPinchingFinger(hand);
+        if(pf.pinchStrength > 0) {
+            var pinchingFinger = findPinchingFinger(hand, 500);
             console.log('pinch strength: ', hand.pinchStrength);
             console.log('finger type: ', pinchingFinger.type);
             pf.pinchIndex = pinchingFinger.type;
-            pf.pinchStrength = hand.pinchStrength;
+            // pf.pinchStrength = hand.pinchStrength;
+
+            // console.log(pf.pinchTimeStramp);
+
+            // 计算force touch
+            if (leap.vec3.distance(hand.thumb.tipPosition, hand.fingers[pinchingFinger.type].tipPosition) < 500) {
+                pf.forceValue = forceValue();
+                console.log('force value: ', forceValue());
+            }
         } else {
             console.log('no pinch finger')
             pf.pinchIndex = -1;
             pf.pinchStrength = 0;
+            pf.forceValue = 0;
         }
 
         // 检测 Grab 手势
@@ -109,15 +105,14 @@ leap.loop({enableGesture: true},function(frame) {
     } else {
         pf.pinchIndex = -1;
         pf.pinchStrength = 0;
+        pf.forceValue = 0;
     }
-
-
 
     // pinch gesture
     // calculate the distance to figure out which finger is pinched
-    function findPinchingFinger(hand){
+    function findPinchingFinger(hand, closest){
         var pincher;
-        var closest = 500;
+        //var closest = 500;
         for(var f = 1; f < 5; f++)
         {
             current = hand.fingers[f];
@@ -128,7 +123,23 @@ leap.loop({enableGesture: true},function(frame) {
                 pincher = current;
             }
         }
+        if (pincher.type != pf.pinchIndex) {
+            pf.pinchTimeStramp = Date.now();
+        }
         return pincher;
+    }
+
+    function findPinchingStrength(hand) {
+        var thumbDirection = hand.fingers[0].direction;
+        var indexDirection = hand.fingers[1].direction;
+
+        var dotProduct = leap.vec3.dot(thumbDirection, indexDirection);
+
+        if (dotProduct < 0.7 && hand.grabStrength < 0.85) {
+            return hand.pinchStrength;
+        } else {
+            return -1;
+        }
     }
 
     // 实验性检测
@@ -142,5 +153,21 @@ leap.loop({enableGesture: true},function(frame) {
 
         console.log(distanceBetweenLeftRight)
         return distanceBetweenLeftRight
+    }
+
+    function forceValue(){
+        // pf is the global message protocol object
+        if (pf.pinchTimeStramp === 0) {
+            return -1;
+        }
+
+        var delay = 250;
+        var duration = 1000;
+
+        // calculate force touch value
+        var value = ((Date.now() - pf.pinchTimeStramp) - delay)/duration;
+        var force = (value >=1 ) ? 1 : value*value;
+
+        return force;
     }
 });
