@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="__Demo_Tap_Watch_Extension">
+                    <items>
+                        <label alignment="left" text="Tap Count:" id="Xjx-Rb-ea1"/>
+                        <button width="1" height="100" alignment="left" title="0" id="fj3-Sa-hQl">
+                            <fontDescription key="font" type="boldSystem" pointSize="50"/>
+                        </button>
+                        <button width="1" alignment="left" title="Tap Button" id="VvQ-Q4-ApK"/>
+                        <label alignment="left" text="Label" id="CSK-Kv-iKg"/>
+                        <label alignment="left" text="Label" id="3De-WQ-4iK"/>
+                        <label alignment="left" text="Label" id="ts3-n9-50L"/>
+                        <label alignment="left" text="Label" id="wcu-7a-aDn"/>
+                    </items>
+                    <connections>
+                        <outlet property="countButton" destination="fj3-Sa-hQl" id="5Bl-bx-NIf"/>
+                        <outlet property="grab" destination="ts3-n9-50L" id="xg1-Sb-esk"/>
+                        <outlet property="index" destination="CSK-Kv-iKg" id="kbx-yi-uPb"/>
+                        <outlet property="indexStrength" destination="3De-WQ-4iK" id="JnN-bJ-EFm"/>
+                        <outlet property="tap" destination="wcu-7a-aDn" id="JYw-o1-N5t"/>
+                        <outlet property="tapButton" destination="VvQ-Q4-ApK" id="ErI-oI-IYm"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
