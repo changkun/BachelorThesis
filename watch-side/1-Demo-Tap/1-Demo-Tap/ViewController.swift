@@ -16,34 +16,26 @@ class ViewController: UIViewController {
     @IBOutlet var grabStrength: UILabel!
     @IBOutlet var forceValue: UILabel!
     
-    enum CompleteStatu {
-        case Finish
-        case Notyet
-    }
-    
-    let url = NSURL(string: "http://192.168.1.102:10086")!
-    let conf = NSURLSessionConfiguration.defaultSessionConfiguration()
-    var task: NSURLSessionDataTask?
-    var session: NSURLSession!
+    var networkTask: Networking = Networking()
     
     var gesture: Gesture!
     var interaction: Interaction = Interaction()
     
-    var msgComplete: CompleteStatu = .Finish
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        session = NSURLSession(configuration: conf)
-        if session == nil {
-            print("Network session create failed.")
-        }
         
         NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.sendInteractionMsg), userInfo: nil, repeats: true)
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.connectServer), userInfo: nil, repeats: true)
+        
+        
+        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self.networkTask, selector: #selector(Networking.connectServer), userInfo: nil, repeats: true)
+        
     }
     
     func sendInteractionMsg() {
+        if let d = self.networkTask.gestureData {
+            self.gesture = Gesture(fromDictionary: d)
+        }
         if self.gesture != nil {
             switch self.gesture.pinchIndex {
             case 1:
@@ -90,27 +82,6 @@ class ViewController: UIViewController {
                 })
             }
         }
-    }
-    
-    func connectServer() {
-        if msgComplete == .Notyet {
-            return
-        }
-        msgComplete = .Notyet
-        task = session.dataTaskWithURL(url, completionHandler: {
-            (data, res, error) -> Void in
-            if let err = error {
-                print("dataTaskWithURL fail: \(err.debugDescription)")
-                return
-            }
-            if let d = data {
-                if let jsonObj = try? NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary {
-                    self.gesture = Gesture(fromDictionary: jsonObj!)
-                }
-                self.msgComplete = .Finish
-            }
-        })
-        task!.resume()
     }
 
     override func didReceiveMemoryWarning() {
