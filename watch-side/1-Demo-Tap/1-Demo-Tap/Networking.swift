@@ -44,7 +44,6 @@ class Networking: NSObject {
             }
             if let d = data {
                 if let jsonObj = try? NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary {
-//                    self.gesture = Gesture(fromDictionary: jsonObj!)
                     self.gestureData = jsonObj!
                 }
                 self.msgComplete = .Finish
