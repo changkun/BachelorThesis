@@ -29,6 +29,8 @@ It's refer to two parts of this project:
 
 * [client](./client) 
   - This folder contains the client software  of watch and phone side, implemented by Swift 2.2;
+* [demo](./demo)
+  - This folder contains demo pictures;
 * [docs](./desktop) 
   - This folder contains related files in this project, include applying doc, architecture source file, advisor comments and etc.
 * [experiment](./experiment) 
@@ -41,9 +43,9 @@ It's refer to two parts of this project:
 <a name="demo"/>
 ## Demo
 
-* [YouTube](https://www.youtube.com/watch?v=ef2pKK6b0UA&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
+* [YouTube](https://www.youtube.com/watch?v=C2-5z7pIv98&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
 
-[![ScreenShot](./demo/screenshot.png)](https://youtu.be/ef2pKK6b0UA)
+[![ScreenShot](./demo/screenshot.png)](https://www.youtube.com/watch?v=C2-5z7pIv98&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM)
 
 <a name="external"/>
 ## External Projects

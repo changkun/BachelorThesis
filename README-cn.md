@@ -30,6 +30,8 @@
 
 * [client](./client) 
   - 此文件夹中包含了客户端(iOS 与watchOS) 的 Swift 源码；
+* [demo](./demo)
+  - 此文件夹中包含了演示图片；
 * [docs](./desktop) 
   - 此文件夹中包含了项目中产生的相关文档，包括申报表、架构图源文件、答辩Keynote、导师评语(待添加)等；
 * [experiment](./experiment) 
@@ -46,6 +48,7 @@
 
 [![ScreenShot](./demo/screenshot.png)](https://youtu.be/ef2pKK6b0UA)
 
+* [腾讯视频源](http://v.qq.com/page/b/a/z/b0198gu45az.html)
 
 <a name="external"/>
 ## 从论文中析出的项目
