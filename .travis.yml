@@ -1,4 +1,8 @@
 os:
     - osx
+osx_image: xcode7.3
 script:
     cd server && npm install && npm test && cd ..
+    cd client && xcodebuild -project 0-demo-crown-circle/demo-crown-circle.xcodeproj && cd ..
+    cd client && xcodebuild -project 1-Demo-Tap/1-Demo-Tap.xcodeproj && cd ..
+    cd client && xcodebuild -project 5-Demo-Game/5-Demo-Game.xcodeproj && cd ..
