@@ -43,7 +43,7 @@ It's refer to two parts of this project:
 
 * [YouTube](https://www.youtube.com/watch?v=ef2pKK6b0UA&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ef2pKK6b0UA" frameborder="0" allowfullscreen></iframe>
+<iframe width="auto" height="auto" src="https://www.youtube.com/embed/ef2pKK6b0UA" frameborder="0" allowfullscreen></iframe>
 
 <a name="external"/>
 ## External Projects
