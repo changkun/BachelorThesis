@@ -1,4 +1,4 @@
 os:
     - osx
 script:
-    cd server && npm test && cd ..
+    cd server && npm install && npm test && cd ..
