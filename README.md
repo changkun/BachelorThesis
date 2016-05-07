@@ -1,42 +1,62 @@
-# 智能手表的非接触式备择交互模式的设计
+# Designing Alternative Contact-free Control Modalities for Smart Watches
 
 [![Build Status](https://travis-ci.com/changkun/BachelorThesis.svg?token=wRf5KPUizYFaNxwsZRsv&branch=master)](https://travis-ci.com/changkun/BachelorThesis)
 
-中文 | [English](./README-en.md)
+English | [中文](./README-cn.md)
 
-本项目中包含了个人毕业设计中的全部代码、文章及相关成果。
+This repository contains my bachelor thesis: source code, thesis paper and other related files.
 
-## <a name="index"/>目录
-* [部署方法](#setup)
-* [文件说明](#illustrate)
-* [演示](#demo)
-* [许可](#license)
+<a name="index"/>
+## Contents
+* [Setup](#setup)
+* [Files](#files)
+* [Demo](#demo)
+* [External Projects](#external)
+* [License](#license)
 
 <a name="setup"/>
-## 部署方法
+## Setup
 
-分别参考软件的三个组成部分：
+It's refer to two parts of this project:
 
-1. **移动端**：iOS & WatchOS 部分；
-2. **桌面端**：Leap Motion 桌面端部分；
-3. **服务端**：数据分析、交换的部分。
+1. **Client Side**：iOS & WatchOS for data communication and interaction present；
+  - Client side built method see: [Client README](./client/README.md)
+2. **Server Side**：Data analysis and exchange, gesture recognize.
+  - Server side built method see: [Server README](./server/README.md)
 
-<a name="illustrate"/>
-## 文件说明
+<a name="files"/>
+## Files
 
-* [desktop](./desktop) 此文件夹中包含了桌面端 Leap Motion 程序的 Python 源码；
-* [watch-side](./watch-side) 此文件夹中包含了手表端程序的 Swift 源码；
-* [server](./server) 此文件夹中包含了服务端的 NodeJS 源码；
-* [paper](./paper) 此文件夹中包含了毕业设计论文的 LaTeX 源码。
+* [client](./client) 
+  - This folder contains the client software  of watch and phone side, implemented by Swift 2.2;
+* [docs](./desktop) 
+  - This folder contains related files in this project, include applying doc, architecture source file, advisor comments and etc.
+* [experiment](./experiment) 
+  - This folder contains the related user study file, such as questionnaire, analysis source code and etc.
+* [paper](./paper) 
+  - This folder contains the thesis paper and its LaTeX source file;
+* [server](./server) 
+  - This folder contains server side Leap-enabled software, implemented by NodeJS.
 
 <a name="demo"/>
-## 演示
-* 部署教程：coming soon...
-* 演示效果：coming soon...
+## Demo
+
+* [YouTube](https://www.youtube.com/watch?v=ef2pKK6b0UA&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ef2pKK6b0UA" frameborder="0" allowfullscreen></iframe>
+
+<a name="external"/>
+## External Projects
+
+
+* [SWUNThesis](https://github.com/changkun/SWUNThesis): LaTeX Thesis Template for Southwest University for Nationalities
+* [LeapDocCN](https://github.com/changkun/LeapDocCN): LeapMotion SDK Offical Documentation Chinese Translation
 
 <a name="license"/>
-## 许可
+## License
 
-本项目中的 [paper](./paper) 及 [deploy](./deploy) 采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享(BY-NC-SA) 4.0 国际许可协议</a>进行许可。
+The work in this repository (except paper and code)is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 
-其余部分均采用 [GNU Public Licence v3](./LICENSE) 进行许可。
+All code is licensed under a [GNU Public Licence v3](./LICENSE).
+
+The [Thesis Paper CN](./paper/main-cn.pdf) and [Thesis Paper EN](./paper/main-en.pdf) contents (include [release contents](./paper/release/)) are Copyright © 2016 Ou, Changkun. All rights reserved.
