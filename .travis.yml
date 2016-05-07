@@ -1,0 +1,4 @@
+os:
+    - osx
+script:
+    cd server && npm test && cd ..

@@ -55,8 +55,8 @@ It's refer to two parts of this project:
 <a name="license"/>
 ## License
 
-The work in this repository (except paper and code)is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+1. The work in this repository (except paper and code) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 
-All code is licensed under a [GNU Public Licence v3](./LICENSE).
+2. All code is licensed under a [GNU Public Licence v3](./LICENSE).
 
-The [Thesis Paper CN](./paper/main-cn.pdf) and [Thesis Paper EN](./paper/main-en.pdf) contents (include [release contents](./paper/release/)) are Copyright © 2016 Ou, Changkun. All rights reserved.
+3. The [Thesis Paper CN](./paper/main-cn.pdf) and [Thesis Paper EN](./paper/main-en.pdf) contents (include [release contents](./paper/release/)) are Copyright © 2016 Ou, Changkun. All rights reserved.

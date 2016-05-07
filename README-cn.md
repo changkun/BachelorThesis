@@ -56,8 +56,8 @@
 <a name="license"/>
 ## 许可
 
-本项目中所有内容（除论文、代码外）采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享(BY-NC-SA) 4.0 国际许可协议</a>进行许可。
+1. 本项目中所有内容（除论文、代码外）采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享(BY-NC-SA) 4.0 国际许可协议</a>进行许可。
 
-所有代码均采用 [GNU Public Licence v3](./LICENSE) 进行许可。
+2. 所有代码均采用 [GNU Public Licence v3](./LICENSE) 进行许可。
 
-而[中文论文](./paper/main-cn.pdf) 和 [英文论文](./paper/main-en.pdf) (包括[其余发布版本](./paper/release/)) 均为 欧长坤版权所有©2016年. 保留所有权利.
+3. 而[中文论文](./paper/main-cn.pdf) 和 [英文论文](./paper/main-en.pdf) (包括[其余发布版本](./paper/release/)) 均为 欧长坤版权所有©2016年. 保留所有权利.

@@ -10,7 +10,7 @@ function PinchFinger() {
     this.pinchIndex    = -1;
     this.pinchStrength = 0;
     this.grabStrength  = 0;
-    this.forceValue = -1;
+    this.forceValue = 0;
 }
 var pf = new PinchFinger();
 
@@ -139,4 +139,3 @@ var leapMain = leap.loop({enableGesture: true},function(frame) {
 
 module.exports.mainThread = leapMain;
 module.exports.info = pf
-
