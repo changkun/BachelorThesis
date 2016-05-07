@@ -43,7 +43,7 @@ It's refer to two parts of this project:
 
 * [YouTube](https://www.youtube.com/watch?v=ef2pKK6b0UA&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
 
-[![ScreenShot](http://img.youtube.com/vi/ef2pKK6b0UA/0.jpg)](https://youtu.be/ef2pKK6b0UA)
+[![ScreenShot](./demo/screenshot.png)](https://youtu.be/ef2pKK6b0UA)
 
 <a name="external"/>
 ## External Projects
