@@ -1,40 +1,16 @@
-# BachelorThesis: Designing Alternative Contact-free Control Modalities for Smart Watches
+# Client
 
-This repository contains my bachelor thesis: source code and thesis paper.
+English | [中文](./README-cn.md)
 
-Now, my bachelor thesis is in progress. If you have any improvement opinion and suggestion, please send me issues, thanks.
+This folder contains three demo program, its present five effects mentioned in [thesis](./paper/main-en.pdf).
 
-## Related Fields
-I am plan to combine the following fields into my bachelor thesis:
+Include:
 
-* Human Computer Interaction
-* Machine Learning
-* Computer Vision
-* Mobile Application Development
-* Distributed Communications
+1. [0-demo-crown-circle](./0-demo-crown-circle)
+    - This demo is an experiment demo program, we do not recommend you to run this program. This demo only for testing the communication performance and gesture recognize, includes: pinch, grab and etc.
+2. [1-Demo-Tap](./1-Demo-Tap)
+    - This demo present the alternative design of Tap and ForceTouch gestures. The button on watch interface will be click and the counter will be increase when user perform a pinch gesture; The counter will alert a Force operation when user perform a ForceTouch gesture.
+3. [5-Demo-Game](./5-Demo-Game)
+    - This demo implemented a game on Apple Watch, which is a tiny application for this project. Player could use Digital Crown or two fingers swipe, which is the Alternative Design, to manipulate the paddle.
 
-## Prior Work
-My prior works while undergraduates contains the following demonstrate system: 
-* Mid-air gesture recognition through single RGB camera based on OpenCV and MFC;
-* Solar system based on OpenGL-GLUT;
-* Training Language compiler;
-* Desktop computer automatic wakeup;
-* Keynote remote controller via smart watches based on Node.js;
-* Notification pushing based on LBS and iBeacon;
-* Hand posture prediction based on touch behaviour and device motion;
-* User authentication based on touch behaviour and device motion.
-
-## Prior Frameworks
-I developed the following frameworks when I was junior student:
-* A scikit-learn style machine learning frameworks;
-* A deep neural networks differential calculation toolkit;
-* A distribution communication frameworks improve MPI Allreduce and Broadcast can be tolerance;
-
-## Required frameworks
-coming soon.
-
-## Related Work
-coming soon.
-
-## TODO List
-1. coming soon.
+**Note that** you need to check the server IP address in `Networking.swift` when running these demos.

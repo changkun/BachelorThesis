@@ -1,6 +1,6 @@
 # Designing Alternative Contact-free Control Modalities for Smart Watches
 
-[![Build Status](https://travis-ci.com/changkun/BachelorThesis.svg?token=wRf5KPUizYFaNxwsZRsv&branch=master)](https://travis-ci.com/changkun/BachelorThesis)
+[![Build Status](https://travis-ci.org/changkun/BachelorThesis.svg)](https://travis-ci.org/changkun/BachelorThesis)
 
 English | [中文](./README-cn.md)
 
@@ -27,17 +27,17 @@ It's refer to two parts of this project:
 <a name="files"/>
 ## Files
 
-* [client](./client) 
+* [client](./client)
   - This folder contains the client software  of watch and phone side, implemented by Swift 2.2;
 * [demo](./demo)
   - This folder contains demo pictures;
-* [docs](./desktop) 
+* [docs](./desktop)
   - This folder contains related files in this project, include applying doc, architecture source file, advisor comments and etc.
-* [experiment](./experiment) 
+* [experiment](./experiment)
   - This folder contains the related user study file, such as questionnaire, analysis source code and etc.
-* [paper](./paper) 
+* [paper](./paper)
   - This folder contains the thesis paper and its LaTeX source file;
-* [server](./server) 
+* [server](./server)
   - This folder contains server side Leap-enabled software, implemented by NodeJS.
 
 <a name="demo"/>

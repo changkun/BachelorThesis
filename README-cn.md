@@ -1,10 +1,10 @@
 # 智能手表的非接触式备择交互模式的设计
 
-[![Build Status](https://travis-ci.com/changkun/BachelorThesis.svg?token=wRf5KPUizYFaNxwsZRsv&branch=master)](https://travis-ci.com/changkun/BachelorThesis)
+[![Build Status](https://travis-ci.org/changkun/BachelorThesis.svg)](https://travis-ci.org/changkun/BachelorThesis)
 
 中文 | [English](./README.md)
 
-本项目中包含了个人毕业设计中的全部代码、文章及相关成果。
+本项目中包含了毕业设计中的全部代码、文章及相关成果。
 
 <a name="index"/>
 ## 目录
@@ -20,25 +20,25 @@
 本项目的软件由两个部分组成：
 
 1. **客户端**：iOS & WatchOS 数据交换、效果呈现的部分；
-  - 客户端部署方法请查看：[客户端说明](./client/README.md)
+  - 客户端部署方法请查看：[客户端说明](./client/README-cn.md)
 
 2. **服务端**：数据分析、交换、手势识别的部分。
-  - 服务端部署方法请查看：[服务端说明](./server/README.md)
+  - 服务端部署方法请查看：[服务端说明](./server/README-cn.md)
 
 <a name="files"/>
 ## 文件说明
 
-* [client](./client) 
+* [client](./client)
   - 此文件夹中包含了客户端(iOS 与watchOS) 的 Swift 源码；
 * [demo](./demo)
   - 此文件夹中包含了演示图片；
-* [docs](./desktop) 
-  - 此文件夹中包含了项目中产生的相关文档，包括申报表、架构图源文件、答辩Keynote、导师评语(待添加)等；
-* [experiment](./experiment) 
+* [docs](./desktop)
+  - 此文件夹中包含了项目中产生的相关文档，包括申报表、架构图源文件、答辩Keynote、导师评语等；
+* [experiment](./experiment)
   - 此文件夹中包含了项目中有关用户调研的全部数据、文档、代码等文件；
-* [paper](./paper) 
+* [paper](./paper)
   - 此文件夹中包含了毕业设计论文及其 LaTeX 源码；
-* [server](./server) 
+* [server](./server)
   - 此文件夹中包含了服务端的 NodeJS 源码；
 
 <a name="demo"/>
