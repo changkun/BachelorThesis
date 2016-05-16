@@ -13,4 +13,4 @@ Include:
 3. [5-Demo-Game](./5-Demo-Game)
     - This demo implemented a game on Apple Watch, which is a tiny application for this project. Player could use Digital Crown or two fingers swipe, which is the Alternative Design, to manipulate the paddle.
 
-**Note that** you need to check the server IP address in `Networking.swift` when running these demos.
+**Note that** you need to input the server IP address in when running these demos.
