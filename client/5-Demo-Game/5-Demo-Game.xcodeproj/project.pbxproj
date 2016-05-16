@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		796D055A1CE9581900004199 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 796D05591CE9581900004199 /* MBProgressHUD.m */; };
 		79957CE11CD9E15D000E05F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79957CE01CD9E15D000E05F1 /* AppDelegate.swift */; };
 		79957CE31CD9E15D000E05F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79957CE21CD9E15D000E05F1 /* ViewController.swift */; };
 		79957CE61CD9E15D000E05F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79957CE41CD9E15D000E05F1 /* Main.storyboard */; };
@@ -69,6 +70,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		796D05571CE9581800004199 /* 5-Demo-Game-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "5-Demo-Game-Bridging-Header.h"; sourceTree = "<group>"; };
+		796D05581CE9581900004199 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		796D05591CE9581900004199 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		79957CDD1CD9E15D000E05F1 /* 5-Demo-Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5-Demo-Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79957CE01CD9E15D000E05F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79957CE21CD9E15D000E05F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +114,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		796D05561CE9580A00004199 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				796D05581CE9581900004199 /* MBProgressHUD.h */,
+				796D05591CE9581900004199 /* MBProgressHUD.m */,
+				796D05571CE9581800004199 /* 5-Demo-Game-Bridging-Header.h */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
 		79957CD41CD9E15D000E05F1 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +147,7 @@
 		79957CDF1CD9E15D000E05F1 /* 5-Demo-Game */ = {
 			isa = PBXGroup;
 			children = (
+				796D05561CE9580A00004199 /* ThirdParty */,
 				79957CE01CD9E15D000E05F1 /* AppDelegate.swift */,
 				79957CE21CD9E15D000E05F1 /* ViewController.swift */,
 				79957D1B1CDA3B2B000E05F1 /* Networking.swift */,
@@ -302,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79957D1C1CDA3B2B000E05F1 /* Networking.swift in Sources */,
+				796D055A1CE9581900004199 /* MBProgressHUD.m in Sources */,
 				79957D201CDA3BE5000E05F1 /* Interaction.swift in Sources */,
 				79957CE31CD9E15D000E05F1 /* ViewController.swift in Sources */,
 				79957CE11CD9E15D000E05F1 /* AppDelegate.swift in Sources */,
@@ -512,10 +528,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "5-Demo-Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "us.changkun.--Demo-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "5-Demo-Game/5-Demo-Game-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -523,10 +542,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "5-Demo-Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "us.changkun.--Demo-Game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "5-Demo-Game/5-Demo-Game-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -549,6 +570,7 @@
 				79957D0E1CD9E15D000E05F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79957D101CD9E15D000E05F1 /* Build configuration list for PBXNativeTarget "5-Demo-Game WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -557,6 +579,7 @@
 				79957D121CD9E15D000E05F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79957D141CD9E15D000E05F1 /* Build configuration list for PBXNativeTarget "5-Demo-Game" */ = {
 			isa = XCConfigurationList;
@@ -565,6 +588,7 @@
 				79957D161CD9E15D000E05F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,7 +14,7 @@ enum CompleteStatu {
 }
 class Networking: NSObject {
 
-    let url = NSURL(string: "http://192.168.1.102:10086")!
+    var url: NSURL
     let conf = NSURLSessionConfiguration.defaultSessionConfiguration()
     var task: NSURLSessionDataTask?
     var session: NSURLSession!
@@ -23,13 +23,27 @@ class Networking: NSObject {
     
     var msgComplete: CompleteStatu = .Finish
     
-    override init() {
+    init(URL: String) {
+        let fullAddress = "http://" + URL + ":10086"
+        url = NSURL(string: fullAddress)!
         session = NSURLSession(configuration: conf)
         if session == nil {
             print("Network session create failed.")
         }
     }
     
+    func isConnected() -> Bool {
+        var connected = true
+        let semaphore = dispatch_semaphore_create(0)
+        session.dataTaskWithURL(url, completionHandler: { (data, res, error) in
+            if error != nil {
+                connected = false
+            }
+            dispatch_semaphore_signal(semaphore)
+        }).resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        return connected
+    }
     
     func connectServer() {
         if msgComplete == .Notyet {

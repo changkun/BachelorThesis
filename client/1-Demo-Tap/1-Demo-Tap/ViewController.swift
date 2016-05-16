@@ -16,19 +16,45 @@ class ViewController: UIViewController {
     @IBOutlet var grabStrength: UILabel!
     @IBOutlet var forceValue: UILabel!
     
-    var networkTask: Networking = Networking()
+    var networkTask: Networking!
     
     var gesture: Gesture!
     var interaction: Interaction = Interaction()
     
+    @IBOutlet var serverAlert: UILabel!
+    @IBOutlet var ipContent: UITextField!
+    @IBOutlet var connectButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ipContent.delegate = self
+    }
+    
+    @IBAction func connectServer(sender: AnyObject) {
         
-        
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.sendInteractionMsg), userInfo: nil, repeats: true)
-        
-        
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self.networkTask, selector: #selector(Networking.connectServer), userInfo: nil, repeats: true)
+        if ipContent.text != "" {
+            
+            networkTask = Networking(URL: ipContent.text!)
+            
+            let loading = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            loading.mode = .Indeterminate
+            loading.label.text = "Connecting"
+            
+            if ( networkTask.isConnected() ) {
+                serverAlert.text = "Game is running"
+                connectButton.removeFromSuperview()
+                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.sendInteractionMsg), userInfo: nil, repeats: true)
+                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: networkTask, selector: #selector(Networking.connectServer), userInfo: nil, repeats: true)
+                view.endEditing(true)
+            } else {
+                serverAlert.text = "Please input a correct IP Address!"
+            }
+            
+            loading.hideAnimated(true)
+            
+        } else {
+            serverAlert.text = "Please input IP Address!"
+        }
         
     }
     
@@ -89,3 +115,10 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        connectServer(textField)
+        return true
+    }
+}

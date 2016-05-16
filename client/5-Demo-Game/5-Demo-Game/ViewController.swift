@@ -13,20 +13,49 @@ class ViewController: UIViewController {
 
     @IBOutlet var pinchStrength: UILabel!
     
-    var networkTask: Networking = Networking()
+    var networkTask: Networking!
     var gesture: Gesture!
     var interaction: Interaction = Interaction()
     
+    @IBOutlet var serverAlert: UILabel!
+    @IBOutlet var ipContent: UITextField!
+    @IBOutlet var connectButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.sendInteractionMsg), userInfo: nil, repeats: true)
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: networkTask, selector: #selector(Networking.connectServer), userInfo: nil, repeats: true)
+        ipContent.delegate = self
     }
 
+    @IBAction func connectServer(sender: AnyObject) {
+        
+        if ipContent.text != "" {
+            
+            networkTask = Networking(URL: ipContent.text!)
+            
+            let loading = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            loading.mode = .Indeterminate
+            loading.label.text = "Connecting"
+            
+            if ( networkTask.isConnected() ) {
+                serverAlert.text = "Game is running"
+                connectButton.removeFromSuperview()
+                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(ViewController.sendInteractionMsg), userInfo: nil, repeats: true)
+                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: networkTask, selector: #selector(Networking.connectServer), userInfo: nil, repeats: true)
+                view.endEditing(true)
+            } else {
+                serverAlert.text = "Please input a correct IP Address!"
+            }
+            
+            loading.hideAnimated(true)
+
+        } else {
+            serverAlert.text = "Please input IP Address!"
+        }
+        
+    }
     func sendInteractionMsg() {
-        if let d = networkTask.gestureData {
-            gesture = Gesture(fromDictionary: d)
+        if networkTask.gestureData != nil {
+            gesture = Gesture(fromDictionary: networkTask.gestureData! )
         }
         if gesture != nil {
             
@@ -43,11 +72,22 @@ class ViewController: UIViewController {
                         print(error)
                 })
             }
+            
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        connectServer(textField)
+        return true
+    }
+}

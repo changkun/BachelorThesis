@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game is running" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQk-oA-ntN">
-                                <rect key="frame" x="234" y="289" width="132.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please input server IP address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQk-oA-ntN">
+                                <rect key="frame" x="177" y="289" width="246" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -33,22 +33,51 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please input IP address" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8qP-Th-Dvx">
+                                <rect key="frame" x="52" y="80" width="496" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qvt-7X-6VC"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rn-mT-zaV">
+                                <rect key="frame" x="246" y="149" width="107" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="Nd6-5B-h9m"/>
+                                    <constraint firstAttribute="height" constant="30" id="wzS-Rm-vu0"/>
+                                </constraints>
+                                <state key="normal" title="Connect Server"/>
+                                <connections>
+                                    <action selector="connectServer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zEI-df-1nI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8qP-Th-Dvx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="32" id="7bN-dm-L7V"/>
                             <constraint firstItem="SQk-oA-ntN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KhI-Nj-hLr"/>
+                            <constraint firstItem="6rn-mT-zaV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M35-z7-bIJ"/>
+                            <constraint firstItem="8qP-Th-Dvx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="NG1-Iv-FeH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8qP-Th-Dvx" secondAttribute="trailing" constant="32" id="WDs-6p-zoh"/>
                             <constraint firstItem="H3f-Lf-hRf" firstAttribute="top" secondItem="SQk-oA-ntN" secondAttribute="bottom" constant="70" id="gQJ-fX-KcF"/>
                             <constraint firstItem="H3f-Lf-hRf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kWw-jv-dtM"/>
                             <constraint firstItem="SQk-oA-ntN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mEr-Cx-DBt"/>
+                            <constraint firstItem="6rn-mT-zaV" firstAttribute="top" secondItem="8qP-Th-Dvx" secondAttribute="bottom" constant="39" id="o8F-gv-tbB"/>
+                            <constraint firstItem="8qP-Th-Dvx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vWV-d8-M35"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="connectButton" destination="6rn-mT-zaV" id="sxc-ta-675"/>
+                        <outlet property="ipContent" destination="8qP-Th-Dvx" id="o74-WA-a3Z"/>
                         <outlet property="pinchStrength" destination="H3f-Lf-hRf" id="iiC-8I-ICp"/>
+                        <outlet property="serverAlert" destination="SQk-oA-ntN" id="WdJ-X4-tAj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="369"/>
+            <point key="canvasLocation" x="976" y="288"/>
         </scene>
     </scenes>
 </document>

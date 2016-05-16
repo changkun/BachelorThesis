@@ -41,7 +41,7 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func didScrollDigitalCrown(value: Int) {
         //set paddle position to 1-100% of available space
-        paddlePosition = (CGFloat(value)/100)*(canvasBounds.bottom - paddleHeight)
+        paddlePosition = canvasBounds.bottom - (CGFloat(value)/100)*(canvasBounds.bottom - paddleHeight) - paddleHeight
         spacer.setHeight(paddlePosition)
         
     }
