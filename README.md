@@ -7,7 +7,9 @@ English | [中文](./README-cn.md)
 This repository contains my bachelor thesis: source code, thesis paper and other related files.
 
 <a name="index"/>
+
 ## Contents
+
 * [Setup](#setup)
 * [Files](#files)
 * [Demo](#demo)
@@ -15,6 +17,7 @@ This repository contains my bachelor thesis: source code, thesis paper and other
 * [License](#license)
 
 <a name="setup"/>
+
 ## Setup
 
 It's refer to two parts of this project:
@@ -25,6 +28,7 @@ It's refer to two parts of this project:
   - Server side built method see: [Server README](./server/README.md)
 
 <a name="files"/>
+
 ## Files
 
 * [client](./client)
@@ -41,6 +45,7 @@ It's refer to two parts of this project:
   - This folder contains server side Leap-enabled software, implemented by NodeJS.
 
 <a name="demo"/>
+
 ## Demo
 
 * [YouTube](https://www.youtube.com/watch?v=C2-5z7pIv98&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM):
@@ -48,6 +53,7 @@ It's refer to two parts of this project:
 [![ScreenShot](./demo/screenshot.png)](https://www.youtube.com/watch?v=C2-5z7pIv98&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM)
 
 <a name="external"/>
+
 ## External Projects
 
 
@@ -55,6 +61,7 @@ It's refer to two parts of this project:
 * [LeapDocCN](https://github.com/changkun/LeapDocCN): LeapMotion SDK Offical Documentation Chinese Translation
 
 <a name="license"/>
+
 ## License
 
 1. The work in this repository (except paper and code) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

@@ -7,7 +7,9 @@
 本项目中包含了毕业设计中的全部代码、文章及相关成果。
 
 <a name="index"/>
+
 ## 目录
+
 * [部署方法](#setup)
 * [文件说明](#files)
 * [演示](#demo)
@@ -15,6 +17,7 @@
 * [许可](#license)
 
 <a name="setup"/>
+
 ## 部署方法
 
 本项目的软件由两个部分组成：
@@ -26,6 +29,7 @@
   - 服务端部署方法请查看：[服务端说明](./server/README-cn.md)
 
 <a name="files"/>
+
 ## 文件说明
 
 * [client](./client)
@@ -42,6 +46,7 @@
   - 此文件夹中包含了服务端的 NodeJS 源码；
 
 <a name="demo"/>
+
 ## 演示
 
 * [YouTube 源](https://www.youtube.com/watch?v=ef2pKK6b0UA&list=PLwUqqMt5en7c2QaQ_DkuvZm9dGTz6RjRM)：
@@ -51,12 +56,14 @@
 * [腾讯视频源](http://v.qq.com/page/b/a/z/b0198gu45az.html)
 
 <a name="external"/>
+
 ## 从论文中析出的项目
 
 * [SWUNThesis](https://github.com/changkun/SWUNThesis): 西南民族大学本科毕业设计 LaTeX 模板
 * [LeapDocCN](https://github.com/changkun/LeapDocCN): LeapMotion SDK 官方文档中文翻译
 
 <a name="license"/>
+
 ## 许可
 
 1. 本项目中所有内容（除论文、代码外）采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享(BY-NC-SA) 4.0 国际许可协议</a>进行许可。
